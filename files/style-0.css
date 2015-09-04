@@ -1,26 +1,19 @@
-body {
-    display: inline-block;
-    font-family: serif;
-    padding: 0px;
-    margin: 0px;
-    background-color: #16171A;
+@import url('http://fonts.googleapis.com/css?family=Quattrocento');   /* Load Font */
+
+body {   /* make unscrollable, background image shuffle? */
+    font-family: Quattrocento;
+    border: 3px solid white;
+    background: #16171A;
 }
-button, input, select, textarea { font-family: inherit; }
-a:focus, a.active:focus {
-    outline: none;
-    outline: 0;
-}
+button, input, select, textarea { font-family: inherit; } 
+a:focus, a.active:focus {   outline: none;  outline: 0; }
 h1 {
    /* background: linear-gradient(#C390D4, #8F4BA6);*/
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: #25272B;
+    font-family: arial;
+    position:relative;
+    margin: 30px;
     display: inline-block;
-    padding: 5px;
-    padding-left: 72px;
-    padding-right: 72px;
-    color: #ffffff;
-    text-shadow: 5px 5px 10px rgba(200,200,200,0.5);
+    color: inherit;
 }
 h2 {
     font-size:2em;
@@ -36,23 +29,56 @@ h2 {
     text-shadow: 5px 5px 10px rgba(200,200,200,0.5);
 }
 
+#reference-img{
+    display:inline-block;
+    position:fixed;
+    top:0;
+    left:0;
+    min-width:100%;
+    min-height:100%;
+    background-image: url(../bg/screenshot_20150805_00017.jpg);
+    background-size: contain;                      /* <------ */
+    background-repeat: no-repeat;
+    /*background-position: center center;             optionally, center the image */
+}
 .drop-zone {
-    height:80%;
-    width:80%;
-    border: 3px solid white;   
+    display:inline-block;
+    position:fixed;
+    top:0;
+    left:24%;
+    height:50%;
+    width:50%;
+    color:cyan;
+    border: 3px dashed cyan;
 }
 .left-bar {
-    height:80%;
-    width:80%;
-    border: 3px solid white;   
+    display:inline-block;
+    position:fixed;
+    top:0;
+    left:0;
+    height:88%;
+    width:23.7%;
+    color:pink;
+    border: 3px solid pink;
 }
 .right-bar {
-    height:80%;
-    width:80%;
-    border: 3px solid white;   
+    display:inline-block;
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    color:limegreen;
+    border: 3px solid limegreen;
 }
 .text-block {
-    height:80%;
-    width:80%;
-    border: 3px solid white;   
+        display:inline-block;
+    position:fixed;
+    top:69%;
+    left:33%;
+    height:19.7%;
+    width:50%;
+    color:yellow;
+    border: 3px solid yellow;
+    margin-bottom: 1.25vw;
 }
