@@ -28,17 +28,18 @@ h2 {
     border-radius: 5px;
     text-shadow: 5px 5px 10px rgba(200,200,200,0.5);
 }
-
 #reference-img{
     display:inline-block;
     position:fixed;
     top:0;
     left:0;
-    min-width:100%;
-    min-height:100%;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%; /* (img-height / img-width * container-width) */
     background-image: url(../bg/screenshot_20150805_00017.jpg);
     background-size: contain;                      /* <------ */
     background-repeat: no-repeat;
+    overflow: hidden;
     /*background-position: center center;             optionally, center the image */
 }
 .drop-zone {
@@ -46,10 +47,11 @@ h2 {
     position:fixed;
     top:0;
     left:24%;
-    height:50%;
+    height:67%;
     width:50%;
     color:cyan;
     border: 3px dashed cyan;
+    box-sizing: border-box;
 }
 .left-bar {
     display:inline-block;
@@ -60,25 +62,27 @@ h2 {
     width:23.7%;
     color:pink;
     border: 3px solid pink;
+    box-sizing: border-box;
 }
 .right-bar {
     display:inline-block;
     position:fixed;
-    top:0;
-    left:0;
-    height:100%;
-    width:100%;
+    top:30%;
+    left:79%;
+    height:50%;
+    width:21%;
     color:limegreen;
     border: 3px solid limegreen;
+    box-sizing: border-box;
 }
 .text-block {
-        display:inline-block;
+    display:inline-block;
     position:fixed;
     top:69%;
-    left:33%;
+    left:34.5%;
     height:19.7%;
-    width:50%;
+    width:51.5%;
     color:yellow;
     border: 3px solid yellow;
-    margin-bottom: 1.25vw;
+    box-sizing: border-box;
 }
