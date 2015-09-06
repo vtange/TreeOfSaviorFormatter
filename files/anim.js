@@ -15,8 +15,11 @@ $(document).ready(function(){
     div3.css("height", width3*1.3);
     var div4 = $('.text-block');
     var width4 = div4.width();
-    div4.css("top", width*0.418);
+    div4.css("top", width*0.42);
     div4.css("height", width4*0.23);
+    div4.css("padding-top", width4*0.23*0.12);
+    div4.css("padding-left", width4*0.23*0.25);
+    div4.css("font-size", width4*0.23*0.085);
 };
 $(document).ready(jqUpdateSize);    // When the page first loads
 $(window).resize(jqUpdateSize);     // When the browser changes size

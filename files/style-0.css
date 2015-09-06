@@ -90,6 +90,8 @@ h2 {
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
     width:51.5%;
-    color:yellow;
+    letter-spacing: 0.5px;
+    font-weight:bolder;
+    color:red/*#59493c*/;
     border: 3px solid yellow;
 }
