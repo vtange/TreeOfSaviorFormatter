@@ -6,24 +6,24 @@
         <title>Tree of Savior Formatter</title>
         <link rel="stylesheet" type="text/css" href="files/bootstrap.min.css" /> <!--bootstrap must come first to be overwritten-->
         <link rel="stylesheet" type="text/css" href="files/style-0.css"/>
-        <script src="files/jquery-1.js"></script>
+        <script src="files/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="files/angular.min.js"></script>
         <script type="text/javascript" src="files/app.js"></script>
-<!--        <script type="text/javascript" src="files/filters.js"></script> -->
+        <script type="text/javascript" src="files/anim.js"></script>
 </head>
-<body data-ng-controller="">
+<body data-ng-controller="lineDisplay">
     <h1>Tree of Savior Formatter</h1>
         <div id="reference-img">
-            <div class="left-bar">
+            <div class="left-bar dynamicheight">
                 <h1>LEFT BAR</h1>
             </div>
-            <div class="drop-zone">
+            <div class="drop-zone dynamicheight">
                 <h1>DROP ZONE</h1>
             </div>
-            <div class="right-bar">
+            <div class="right-bar dynamicheight">
                 <h1>RIGHT BAR</h1>
             </div>
-            <div class="text-block">
+            <div class="text-block dynamicheight">
                 <h1>TEXT BLOCK</h1>
             </div>
         </div>
