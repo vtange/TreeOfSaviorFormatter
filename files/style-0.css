@@ -6,20 +6,32 @@ body {   /* make unscrollable, background image shuffle? */
     background: #16171A;
 }
 button, input, select, textarea { font-family: inherit; } 
-a:focus, a.active:focus {   outline: none;  outline: 0; }
+a:focus, a.active:focus { outline: none;  outline: 0; } /* prevent outline of buttons when clicked */
+button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: none;
+    outline: 0;
+} /* prevent outline of buttons when clicked */
+.btn-default:active, .btn-default:focus {
+   color:white;
+   background-color: transparent;
+   margin-bottom: 10px;
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -o-user-select: none;
+   user-select: none;
+} /* prevent outline of buttons when clicked */
 h1 {
-   /* background: linear-gradient(#C390D4, #8F4BA6);*/
-    font-family: arial;
-    position:relative;
-    margin: 30px;
     display: inline-block;
+    font-family: arial;
+    margin: 30px;
     color: inherit;
 }
 h2 {
+    display: inline-block;
     font-size:2em;
     margin-top: 30px;
     margin-bottom: 30px;
-    display: inline-block;
     padding: 10px;
     padding-left: 56px;
     padding-right: 56px;
@@ -29,56 +41,54 @@ h2 {
     text-shadow: 5px 5px 10px rgba(200,200,200,0.5);
 }
 #reference-img{
-    display:inline-block;
-    position:fixed;
+    display:block;
+    position:absolute;
     top:0;
     left:0;
     width: 100%;
     height: 0;
     padding-top: 56.25%; /* (img-height / img-width * container-width) */
-    border:2px solid red;
     background-image: url(../bg/screenshot_20150805_00017.jpg);
     background-size: contain;                      /* <------ */
     background-repeat: no-repeat;
-    overflow: hidden;
     /*background-position: center center;             optionally, center the image */
 }
 .drop-zone {
     display:inline-block;
-    position:fixed;
+    position:absolute;
     top:0;
     left:24%;
-    height:67%;
+    /*height:67%;       replaced with animated jquery*/
     width:50%;
     color:cyan;
     border: 3px dashed cyan;
 }
 .left-bar {
     display:inline-block;
-    position:fixed;
+    position:absolute;
     top:0;
     left:0;
-    height:88%;
+    /*height:88%;       replaced with animated jquery*/
     width:23.7%;
     color:pink;
     border: 3px solid pink;
 }
 .right-bar {
     display:inline-block;
-    position:fixed;
-    top:30%;
+    position:absolute;
+    /*top:35%;       replaced with animated jquery*/
     left:79%;
-    height:50%;
+    /*height:50%;       replaced with animated jquery*/
     width:21%;
     color:limegreen;
     border: 3px solid limegreen;
 }
 .text-block {
     display:inline-block;
-    position:fixed;
-    top:69%;
+    position:absolute;
+    /*top:69%;       replaced with animated jquery*/
     left:34.5%;
-    height:19.7%;
+    /*height:19.7%;       replaced with animated jquery*/
     width:51.5%;
     color:yellow;
     border: 3px solid yellow;
