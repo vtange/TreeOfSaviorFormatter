@@ -27,7 +27,7 @@ $(document).ready(function(){
     var div5 = $('.dialog');
     var width5 = div5.width();
     div5.css("top", width*0.0135);
-    div5.css("height", width5*0.23);
+    div5.css("height", width5*0.1);
 };
 $(document).ready(jqUpdateSize);    // When the page first loads
 $(window).resize(jqUpdateSize);     // When the browser changes size
