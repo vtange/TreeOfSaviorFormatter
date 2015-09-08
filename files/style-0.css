@@ -90,8 +90,22 @@ h2 {
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
     width:51.5%;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.0300em;
     font-weight:bolder;
     color:red/*#59493c*/;
     border: 3px solid yellow;
+}
+@-moz-document url-prefix() {
+    .text-block {
+    display:inline-block;
+    position:absolute;
+    /*top:69%;       replaced with animated jquery*/
+    left:34.5%;
+    /*height:19.7%;       replaced with animated jquery*/
+    width:51.5%;
+    letter-spacing: 0.0325em;
+    font-weight:500;
+    color:red/*#59493c*/;
+    border: 3px solid yellow;
+    }
 }
