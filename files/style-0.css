@@ -21,25 +21,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
    -o-user-select: none;
    user-select: none;
 } /* prevent outline of buttons when clicked */
-h1 {
-    display: inline-block;
-    font-family: arial;
-    margin: 30px;
-    color: inherit;
-}
-h2 {
-    display: inline-block;
-    font-size:2em;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 10px;
-    padding-left: 56px;
-    padding-right: 56px;
-    color: #ffffff;
-    border: 1px solid white;
-    border-radius: 5px;
-    text-shadow: 5px 5px 10px rgba(200,200,200,0.5);
-}
+
 #reference-img{
     display:block;
     position:absolute;
@@ -90,22 +72,18 @@ h2 {
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
     width:51.5%;
-    letter-spacing: 0.0300em;
-    font-weight:bolder;
-    color:red/*#59493c*/;
     border: 3px solid yellow;
 }
-@-moz-document url-prefix() {
-    .text-block {
+.dialog {
     display:inline-block;
-    position:absolute;
-    /*top:69%;       replaced with animated jquery*/
-    left:34.5%;
-    /*height:19.7%;       replaced with animated jquery*/
-    width:51.5%;
-    letter-spacing: 0.0325em;
-    font-weight:500;
+    position:relative;
+    /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
+    left:5.5%;
+    width:95%;
+    border: 1px solid blue;
+    /*font stuff*/
+    letter-spacing: 0.0000000300em;
+    font-weight:bolder;
     color:red/*#59493c*/;
-    border: 3px solid yellow;
-    }
+    text-shadow:0px 0px 1px red;
 }
