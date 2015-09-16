@@ -1,7 +1,8 @@
 @import url('http://fonts.googleapis.com/css?family=Quattrocento');   /* Load Font */
+@font-face { font-family: QuattroBold; src: url('imcm_original.ttf'); }
 
 body {   /* make unscrollable, background image shuffle? */
-    font-family: Quattrocento;
+    font-family: QuattroBold, Quattrocento, sans-serif;
     border: 3px solid white;
     background: #16171A;
 }
@@ -103,8 +104,7 @@ h2 {
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
     width:51.5%;
-    letter-spacing: 0.0325em;
-    font-weight:500;
+    letter-spacing: 0.01325em;
     color:red/*#59493c*/;
     border: 3px solid yellow;
     }
