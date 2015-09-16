@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('body').flowtype({
        minimum   : 1,
        maximum   : 9000,
-       minFont   : 0.001,
+       minFont   : 1,
        maxFont   : 18.25,
        fontRatio : 100
     });
@@ -26,7 +26,7 @@ $(document).ready(function(){
     div4.css("height", width4*0.23);
     var div5 = $('.dialog');
     var width5 = div5.width();
-    div5.css("top", width*0.0135);
+    div5.css("top", width*0.0142);
     div5.css("height", width5*0.1);
 };
 $(document).ready(jqUpdateSize);    // When the page first loads
