@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    $('body').flowtype({
-       minimum   : 1,
+    $('#reference-img').flowtype({
+       minimum   : 10,
        maximum   : 9000,
        minFont   : 1,
        maxFont   : 18.25,
@@ -10,9 +10,9 @@ $(document).ready(function(){
     // Get the dimensions of the viewport
     var width = $(window).width();    //used for repositioning, width used to take advantage of css:contain
         //for every element, make a height to width ratio.
-    var div1 = $('.left-bar');
-    var width1 = div1.width();
-    div1.css("height", width1*2.28);
+    //var div1 = $('.left-bar');
+    //var width1 = div1.width();
+    //div1.css("height", width1*2.28);
     var div2 = $('.drop-zone');
     var width2 = div2.width();
     div2.css("height", width2*0.56);

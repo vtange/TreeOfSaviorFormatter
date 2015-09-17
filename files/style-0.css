@@ -3,7 +3,6 @@
 
 body {   /* make unscrollable, background image shuffle? */
     font-family: QuattroBold, Quattrocento, sans-serif;
-    border: 3px solid white;
     background: #16171A;
 }
 button, input, select, textarea { font-family: inherit; } 
@@ -22,10 +21,8 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
    -o-user-select: none;
    user-select: none;
 } /* prevent outline of buttons when clicked */
-
 #reference-img{
-    display:block;
-    position:absolute;
+    position:relative;
     top:0;
     left:0;
     width: 100%;
@@ -39,23 +36,22 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 .drop-zone {
     display:inline-block;
     position:absolute;
-    top:0;
-    left:24%;
-    /*height:67%;       replaced with animated jquery*/
-    width:50%;
+    top:18%;
+    left:18%;
+    width:64%;
     color:cyan;
-    border: 3px dashed cyan;
+    border: 1.8em dashed cyan;
+    border-radius: 3.6em;
 }
-.left-bar {
+/*.left-bar {
     display:inline-block;
     position:absolute;
     top:0;
     left:0;
-    /*height:88%;       replaced with animated jquery*/
     width:23.7%;
     color:pink;
     border: 3px solid pink;
-}
+}*/
 .right-bar {
     display:inline-block;
     position:absolute;
