@@ -18,7 +18,7 @@ $(document).ready(function(){
     div2.css("height", width2*0.56);
     var div3 = $('.right-bar');
     var width3 = div3.width();
-    div3.css("top", width*0.22);
+    div3.css("top", width*(-0.35));
     div3.css("height", width3*1.3);
     var div4 = $('.text-block');
     var width4 = div4.width();

@@ -22,7 +22,6 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
    user-select: none;
 } /* prevent outline of buttons when clicked */
 #editor{
-    position:relative;
     top:0;
     left:0;
     width: 100%;
@@ -54,7 +53,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 }*/
 .right-bar {
     display:inline-block;
-    position:absolute;
+    position:relative; /*limits heightwidth percentage of children*/
     /*top:35%;       replaced with animated jquery*/
     left:79%;
     /*height:50%;       replaced with animated jquery*/
@@ -62,9 +61,13 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     color:limegreen;
     border: 3px solid limegreen;
 }
+.right-bar span{
+    display:block;
+    height:24%
+}
 .text-block {
     display:inline-block;
-    position:absolute;
+    position:absolute; /*bruteforce method*/
     /*top:69%;       replaced with animated jquery*/
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
@@ -75,7 +78,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 }
 .dialog {
     display:inline-block;
-    position:relative;
+    position:absolute; /*bruteforce method*/
     /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
     left:5.5%;
     width:200%;
