@@ -21,7 +21,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
    -o-user-select: none;
    user-select: none;
 } /* prevent outline of buttons when clicked */
-#reference-img{
+#editor{
     position:relative;
     top:0;
     left:0;
