@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#reference-img').flowtype({
+    $('body').flowtype({
        minimum   : 10,
        maximum   : 9000,
        minFont   : 1,
