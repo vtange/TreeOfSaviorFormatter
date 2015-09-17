@@ -29,7 +29,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     height: 0;
     padding-top: 56.25%; /* (img-height / img-width * container-width) */
     background-image: url(../bg/screenshot_20150805_00017.jpg);
-    background-size: contain;                      /* <------ */
+    background-size: contain;                      
     background-repeat: no-repeat;
     /*background-position: center center;             optionally, center the image */
 }
@@ -68,8 +68,10 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     /*top:69%;       replaced with animated jquery*/
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
-    width:51.5%;
-    border: 3px solid yellow;
+    width:51.8%;
+    background-image: url(../bg/textblock.png);
+    background-size: contain;                      /* <------ */
+    background-repeat: no-repeat;
 }
 .dialog {
     display:inline-block;
@@ -77,7 +79,6 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
     left:5.5%;
     width:200%;
-    border: 1px solid blue;
     /*font stuff*/
     letter-spacing: 0.042em;
     color:red/*#59493c*/;
