@@ -1,6 +1,6 @@
 @import url('http://fonts.googleapis.com/css?family=Quattrocento');   /* Load Font */
 @font-face { font-family: QuattroBold; src: url('imcm_original.ttf'); }
-
+html {overflow-x: hidden;}
 body {   /* make unscrollable, background image shuffle? */
     font-family: QuattroBold, Quattrocento, sans-serif;
     background: #16171A;
@@ -21,6 +21,9 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
    -o-user-select: none;
    user-select: none;
 } /* prevent outline of buttons when clicked */
+
+
+
 #editor{
     top:0;
     left:0;
@@ -39,6 +42,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     left:18%;
     width:64%;
     color:cyan;
+    opacity:0.2;
     border: 1.8em dashed cyan;
     border-radius: 3.6em;
 }
@@ -58,12 +62,18 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     left:79%;
     /*height:50%;       replaced with animated jquery*/
     width:21%;
-    color:limegreen;
-    border: 3px solid limegreen;
+    color:pink;
+    border: 3px solid pink;
 }
-.right-bar span{
-    display:block;
-    height:24%
+#party-quest{
+    position:absolute;
+    left:13%;
+    border:1px solid yellow;
+}
+#member-quest{
+    position:absolute;
+    left:30%;
+    top:40%;
 }
 .text-block {
     display:inline-block;
@@ -72,20 +82,22 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
     width:51.8%;
+    opacity:0.8;      /*debug*/
     background-image: url(../bg/textblock.png);
-    background-size: contain;                      /* <------ */
+    background-size: contain;
     background-repeat: no-repeat;
 }
 .dialog {
     display:inline-block;
     position:absolute; /*bruteforce method*/
     /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
-    left:5.5%;
+    left:5.8%;
     width:200%;
     /*font stuff*/
     letter-spacing: 0.042em;
     color:red/*#59493c*/;
-    text-shadow:0px 0px 1px red;
+    text-shadow:1px 1px 1px red;
+    border:1px solid blue;
 }
 @-moz-document url-prefix() {
     .dialog {
