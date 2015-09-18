@@ -40,6 +40,13 @@ $(document).ready(function(){
        maxFont   : 48.25,
        fontRatio : 200
     });
+    $('.title').flowtype({
+       minimum   : 10,
+       maximum   : 9000,
+       minFont   : 1,
+       maxFont   : 48.25,
+       fontRatio : 200
+    });
 };
 $(document).ready(jqUpdateSize);    // When the page first loads
 $(window).resize(jqUpdateSize);     // When the browser changes size

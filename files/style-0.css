@@ -23,7 +23,27 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
    user-select: none;
 } /* prevent outline of buttons when clicked */
 
+/*---- text sizes by width ----*/
 
+.quest{
+    width:1000%;  /* controls text size in flowtype.js */
+}
+.title{
+    width:900%;  /* controls text size in flowtype.js */
+}
+.dialog {
+    position:absolute;
+    /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
+    top:19%;
+    left:5.8%;
+    width:400%; /* controls text size in flowtype.js */
+    /*font stuff*/
+    /*no line spacing, it hurts the scaling*/
+    color:red/*#59493c*/;
+    text-shadow:0.06em 0.06em 0.06em red;
+}
+
+/*------ positions -------*/
 
 #editor{
     top:0;
@@ -65,9 +85,6 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     color:pink;
     border: 3px solid pink;
 }
-.quest{
-    width:1000%; /* controls text in flowtype.js */
-}
 #party-quest{
     position:absolute;
     left:12.8%;
@@ -87,6 +104,11 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     left:2.8%;
     top:20.8%;
 }
+#no-time{
+    position:absolute;
+    left:14.8%;
+    top:30.0%;
+}
 .text-block {
     position:absolute;
     /*top:69%;       replaced with animated jquery*/
@@ -97,15 +119,4 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     background-image: url(../bg/textblock.png);
     background-size: contain;
     background-repeat: no-repeat;
-}
-.dialog {
-    position:absolute;
-    /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
-    top:19%;
-    left:5.8%;
-    width:400%;
-    /*font stuff*/
-    /*no line spacing, it hurts the scaling*/
-    color:red/*#59493c*/;
-    text-shadow:0.06em 0.06em 0.06em red;
 }
