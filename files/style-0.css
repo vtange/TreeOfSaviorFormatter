@@ -27,9 +27,16 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 
 .quest{
     width:1000%;  /* controls text size in flowtype.js */
+    overflow-x: hidden;
 }
 .title{
     width:900%;  /* controls text size in flowtype.js */
+    overflow-x: hidden;
+}
+.small{
+    width:800%;  /* controls text size in flowtype.js */
+    overflow-x: hidden;
+    line-height: 0.9vw;
 }
 .dialog {
     position:absolute;
@@ -37,6 +44,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     top:19%;
     left:5.8%;
     width:400%; /* controls text size in flowtype.js */
+    overflow-x: hidden;
     /*font stuff*/
     /*no line spacing, it hurts the scaling*/
     color:red/*#59493c*/;
@@ -46,6 +54,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 /*------ positions -------*/
 
 #editor{
+    position:absolute;
     top:0;
     left:0;
     width: 100%;
@@ -57,7 +66,6 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     /*background-position: center center;             optionally, center the image */
 }
 .drop-zone {
-    display:inline-block;
     position:absolute;
     top:18%;
     left:18%;
@@ -82,8 +90,8 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     left:79%;
     /*height:50%;       replaced with animated jquery*/
     width:21%;
-    color:pink;
-    border: 3px solid pink;
+    color:black;
+    border: 3px solid black;
 }
 #party-quest{
     position:absolute;
@@ -107,7 +115,22 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 #no-time{
     position:absolute;
     left:14.8%;
-    top:30.0%;
+    top:30.2%;
+}
+#quest-area{
+    position:absolute;
+    left:17.8%;
+    top:35%;
+}
+#quest-what{
+    position:absolute;
+    left:17.8%;
+    top:40%;
+}
+#quest-desc{
+    position:absolute;
+    left:17.8%;
+    top:51.0%;
 }
 .text-block {
     position:absolute;
