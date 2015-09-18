@@ -23,6 +23,11 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
    user-select: none;
 } /* prevent outline of buttons when clicked */
 
+button{
+    background-color: #16171A;
+    border-radius: 10px;
+}
+
 /*---- text sizes by width ----*/
 
 .quest{
@@ -60,7 +65,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     width: 100%;
     height: 0;
     padding-top: 56.25%; /* (img-height / img-width * container-width) */
-    background-image: url(../bg/screenshot_20150805_00017.jpg);
+    /*background-image: url(../bg/screenshot_20150805_00017.jpg);
     background-size: contain;                      
     background-repeat: no-repeat;
     /*background-position: center center;             optionally, center the image */
@@ -69,9 +74,11 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     position:absolute;
     top:18%;
     left:18%;
-    width:64%;
+    padding-left:20%;
+    padding-right:20%;
+    padding-top:13%;
+    padding-bottom:15%;
     color:cyan;
-    opacity:0.2;
     border: 1.8em dashed cyan;
     border-radius: 3.6em;
 }
@@ -90,8 +97,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     left:79%;
     /*height:50%;       replaced with animated jquery*/
     width:21%;
-    color:black;
-    border: 3px solid black;
+    color:white;
 }
 #party-quest{
     position:absolute;
@@ -138,7 +144,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
     width:51.8%;
-    opacity:0.5;      /*debug*/
+   /*opacity:0.5;      /*debug*/
     background-image: url(../bg/textblock.png);
     background-size: contain;
     background-repeat: no-repeat;
