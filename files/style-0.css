@@ -101,8 +101,9 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 .dialog {
     position:absolute;
     /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
+    top:20%;
     left:5.8%;
-    width:200%;
+    width:360%;
     /*font stuff*/
     letter-spacing: 0.042em;
     color:red/*#59493c*/;

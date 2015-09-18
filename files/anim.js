@@ -4,7 +4,7 @@ $(document).ready(function(){
     var width = $(window).width();    //used for repositioning, width used to take advantage of css:contain
         //for every element, make a height to width ratio.
     //var div1 = $('.left-bar');
-    //var width1 = div1.width();
+    //var width1 = div1.width();                will do if requested
     //div1.css("height", width1*2.28);
         
     var div2 = $('.drop-zone');
@@ -21,17 +21,17 @@ $(document).ready(function(){
     div4.css("top", width*0.41);
     div4.css("height", width4*0.26);
         
-    var div5 = $('.dialog');
-    var width5 = div5.width();
-    div5.css("top", width*0.026);
-    div5.css("height", width5*0.1);
+    //var div5 = $('.dialog');
+    //var width5 = div5.width();                not required as right-bar shows
+    //div5.css("top", width*0.026);
+    //div5.css("height", width5*0.1);
         
     $('.dialog').flowtype({
        minimum   : 10,
        maximum   : 9000,
        minFont   : 1,
-       maxFont   : 18.25,
-       fontRatio : 110
+       maxFont   : 48.25,
+       fontRatio : 200
     });
     $('.quest').flowtype({
        minimum   : 10,
