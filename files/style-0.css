@@ -101,16 +101,11 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 .dialog {
     position:absolute;
     /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
-    top:20%;
+    top:19%;
     left:5.8%;
-    width:360%;
+    width:400%;
     /*font stuff*/
-    letter-spacing: 0.042em;
+    /*no line spacing, it hurts the scaling*/
     color:red/*#59493c*/;
-    text-shadow:1px 1px 1px red;
-}
-@-moz-document url-prefix() {
-    .dialog {
-    letter-spacing: 0.057em;
-    }
+    text-shadow:0.06em 0.06em 0.06em red;
 }
