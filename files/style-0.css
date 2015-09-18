@@ -1,6 +1,7 @@
 @import url('http://fonts.googleapis.com/css?family=Quattrocento');   /* Load Font */
 @font-face { font-family: QuattroBold; src: url('imcm_original.ttf'); }
-html {overflow-x: hidden;}
+@font-face { font-family: CabinMed; src: url('Cabin-Medium-TTF.ttf'); }
+html {overflow-x: hidden}
 body {   /* make unscrollable, background image shuffle? */
     font-family: QuattroBold, Quattrocento, sans-serif;
     background: #16171A;
@@ -56,8 +57,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     border: 3px solid pink;
 }*/
 .right-bar {
-    display:inline-block;
-    position:relative; /*limits heightwidth percentage of children*/
+    position:absolute;
     /*top:35%;       replaced with animated jquery*/
     left:79%;
     /*height:50%;       replaced with animated jquery*/
@@ -65,31 +65,41 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     color:pink;
     border: 3px solid pink;
 }
+.quest{
+    width:1000%; /* controls text in flowtype.js */
+}
 #party-quest{
     position:absolute;
-    left:13%;
-    border:1px solid yellow;
+    left:12.8%;
 }
-#member-quest{
+#charm-quest{
     position:absolute;
-    left:30%;
-    top:40%;
+    left:2.8%;
+    top:5%;
+}
+#warp{
+    position:absolute;
+    left:20.8%;
+    top:13.4%;
+}
+#sanzobar-quest{
+    position:absolute;
+    left:2.8%;
+    top:20.8%;
 }
 .text-block {
-    display:inline-block;
-    position:absolute; /*bruteforce method*/
+    position:absolute;
     /*top:69%;       replaced with animated jquery*/
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
     width:51.8%;
-    opacity:0.8;      /*debug*/
+    opacity:0.5;      /*debug*/
     background-image: url(../bg/textblock.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
 .dialog {
-    display:inline-block;
-    position:absolute; /*bruteforce method*/
+    position:absolute;
     /*hack: don't use margin as it leaves more room for error, just use direct placement, only top gets buggy with sidebar now*/
     left:5.8%;
     width:200%;
@@ -97,7 +107,6 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     letter-spacing: 0.042em;
     color:red/*#59493c*/;
     text-shadow:1px 1px 1px red;
-    border:1px solid blue;
 }
 @-moz-document url-prefix() {
     .dialog {
