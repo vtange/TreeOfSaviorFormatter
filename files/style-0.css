@@ -97,7 +97,7 @@ table{
 }*/
 .right-bar {
     overflow-x: hidden;
-    position:absolute;
+    position:fixed;
     /*top:35%;       replaced with animated jquery*/
     left:79%;
     /*height:50%;       replaced with animated jquery*/
@@ -144,7 +144,7 @@ table{
     top:51.0%;
 }
 .text-block {
-    position:absolute;
+    position:fixed;
     overflow-x: hidden;
     /*top:69%;       replaced with animated jquery*/
     left:34.5%;
