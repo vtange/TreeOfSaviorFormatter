@@ -1,7 +1,6 @@
 @import url('http://fonts.googleapis.com/css?family=Quattrocento');   /* Load Font */
 @font-face { font-family: QuattroBold; src: url('imcm_original.ttf'); }
 @font-face { font-family: CabinMed; src: url('Cabin-Medium-TTF.ttf'); }
-html {}
 body {   /* make unscrollable, background image shuffle? */
     font-family: QuattroBold, Quattrocento, sans-serif;
     background: #16171A;
@@ -28,7 +27,7 @@ input[type='file'] {
     border-radius: 10px;
     /*color: transparent;*/
 
-    width:200px;
+    width:450px;
     margin: 0px auto;
 }
 
@@ -61,7 +60,12 @@ input[type='file'] {
 }
 
 /*------ positions -------*/
-
+table{
+    position:absolute;
+    overflow-x: hidden;
+    top:10%;
+    left:1%;
+}
 #editor{
     position:absolute;
     overflow-x: hidden;

@@ -3,7 +3,7 @@ $(document).ready(function(){
     ////////////////  file upload
 
     $("#upload").bind("click", function () {
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
         if (regex.test($("#fileUpload").val().toLowerCase())) {
             if (typeof (FileReader) != "undefined") {
                 var reader = new FileReader();
