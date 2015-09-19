@@ -32,33 +32,40 @@ $(document).ready(function(){
         }
     });
 
-    ////////////////  DRAG AND DROP
+    ////////////////  drag and drop
 
-    function dragenter(e) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
+    var dropzone = document.querySelector("#drop-zone");
+    var results = document.querySelector("#editor");
 
-    function dragover(e) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
-    function drop(e) {
-      e.stopPropagation();
-      e.preventDefault();
+    dropzone.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-      var dt = e.dataTransfer;
-      var files = dt.files;
+        e.dataTransfer.dropEffect = "copy";
+    }, false);
 
-      handleFiles(files);
-    }
-    var dropbox;
+    dropzone.addEventListener("drop", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-    dropbox = document.getElementById("drop-zone");
-    dropbox.addEventListener("dragenter", dragenter, false);
-    dropbox.addEventListener("dragover", dragover, false);
-    dropbox.addEventListener("drop", drop, false);
+        // let's just work with one file
+        var file = e.dataTransfer.files[0];
+        var reader = new FileReader();
 
+        reader.onload = function(e) {
+            var text = e.target.result;
+
+            var output = text;
+
+            // put the minified code in the results element
+            results.innerHTML = output;
+        }
+
+        reader.readAsText(file);
+
+    }, false);
+    
+    
     ////////////////  RESIZING
 
     function jqUpdateSize(){
