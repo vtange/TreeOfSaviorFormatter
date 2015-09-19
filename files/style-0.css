@@ -26,7 +26,7 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 input[type='file'] {
     background-color: #16171A;
     border-radius: 10px;
-    color: transparent;
+    /*color: transparent;*/
 
     width:200px;
     margin: 0px auto;
@@ -75,7 +75,7 @@ input[type='file'] {
     background-repeat: no-repeat;
     /*background-position: center center;             optionally, center the image */
 }
-.drop-zone {
+#drop-zone {
     position:absolute;
     text-align: center;
     top:18%;

@@ -1,4 +1,66 @@
 $(document).ready(function(){
+
+    ////////////////  file upload
+
+    $("#upload").bind("click", function () {
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+        if (regex.test($("#fileUpload").val().toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var table = $("<table />");
+                    var rows = e.target.result.split("\n");
+                    for (var i = 0; i < rows.length; i++) {
+                        var row = $("<tr />");
+                        var cells = rows[i].split(",");
+                        for (var j = 0; j < cells.length; j++) {
+                            var cell = $("<td />");
+                            cell.html(cells[j]);
+                            row.append(cell);
+                        }
+                        table.append(row);
+                    }
+                    $("#editor").html('');
+                    $("#editor").append(table);
+                }
+                reader.readAsText($("#fileUpload")[0].files[0]);
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid CSV file.");
+        }
+    });
+
+    ////////////////  DRAG AND DROP
+
+    function dragenter(e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+
+    function dragover(e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    function drop(e) {
+      e.stopPropagation();
+      e.preventDefault();
+
+      var dt = e.dataTransfer;
+      var files = dt.files;
+
+      handleFiles(files);
+    }
+    var dropbox;
+
+    dropbox = document.getElementById("drop-zone");
+    dropbox.addEventListener("dragenter", dragenter, false);
+    dropbox.addEventListener("dragover", dragover, false);
+    dropbox.addEventListener("drop", drop, false);
+
+    ////////////////  RESIZING
+
     function jqUpdateSize(){
     // Get the dimensions of the viewport
     var width = $(window).width();    //used for repositioning, width used to take advantage of css:contain
@@ -7,7 +69,7 @@ $(document).ready(function(){
     //var width1 = div1.width();                will do if requested
     //div1.css("height", width1*2.28);
         
-    var div2 = $('.drop-zone');
+    var div2 = $('#drop-zone');
     var width2 = div2.width();
     div2.css("height", width2*0.56);
         
