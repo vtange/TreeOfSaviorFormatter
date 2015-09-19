@@ -35,15 +35,12 @@ input[type='file'] {
 
 .quest{
     width:1000%;  /* controls text size in flowtype.js */
-    overflow-x: hidden;
 }
 .title{
     width:900%;  /* controls text size in flowtype.js */
-    overflow-x: hidden;
 }
 .small{
     width:800%;  /* controls text size in flowtype.js */
-    overflow-x: hidden;
     line-height: 0.9vw;
 }
 .dialog {
@@ -52,7 +49,6 @@ input[type='file'] {
     top:19%;
     left:5.8%;
     width:400%; /* controls text size in flowtype.js */
-    overflow-x: hidden;
     /*font stuff*/
     /*no line spacing, it hurts the scaling*/
     color:red/*#59493c*/;
@@ -60,15 +56,16 @@ input[type='file'] {
 }
 
 /*------ positions -------*/
+html, #wrapper {
+    overflow-x: hidden;
+}
 table{
     position:absolute;
-    overflow-x: hidden;
     top:10%;
     left:1%;
 }
 #editor{
     position:absolute;
-    overflow-x: hidden;
     top:0;
     left:0;
     width: 100%;
@@ -99,6 +96,7 @@ table{
     border: 3px solid pink;
 }*/
 .right-bar {
+    overflow-x: hidden;
     position:absolute;
     /*top:35%;       replaced with animated jquery*/
     left:79%;
@@ -147,6 +145,7 @@ table{
 }
 .text-block {
     position:absolute;
+    overflow-x: hidden;
     /*top:69%;       replaced with animated jquery*/
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
