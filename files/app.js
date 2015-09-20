@@ -6,7 +6,9 @@
     return linesFile;
   }); //end of service
   app.controller('lineDisplay',['$scope', function($scope) {
-
+          this.select = function(){
+            console.log("selected");
+          }
     }]) //end of controller
   app.controller('aideCtrl',[ function() {
 //toggle text block

@@ -11,7 +11,7 @@ $(document).ready(function(){
                     var table = $("<table></table>");
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
-                        var row = $("<tr data-ng-click='list.select()'></tr>");
+                        var row = $('<tr data-ng-click="lines.select()"></tr>');
                         row.html(rows[i]);
                         table.append(row);
                     }
