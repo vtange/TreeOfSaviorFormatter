@@ -30,7 +30,6 @@ input[type='file'] {
     width:450px;
     margin: 0px auto;
 }
-
 /*---- text sizes by width ----*/
 
 .quest{
@@ -86,6 +85,7 @@ table{
     border: 1.8em dashed cyan;
     border-radius: 3.6em;
 }
+#drop-zone.onTop {border: 1.8em dashed lime;}
 /*.left-bar {
     display:inline-block;
     position:absolute;

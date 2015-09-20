@@ -33,21 +33,41 @@ $(document).ready(function(){
     });
 
     ////////////////  drag and drop
-
+    var page = document.querySelector("html");
     var dropzone = document.querySelector("#drop-zone");
     var results = document.querySelector("#editor");
+
+    page.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.dataTransfer.dropEffect = "none";
+    }, false);
+    page.addEventListener("drop", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }, false);
+
+    dropzone.addEventListener('dragleave', function (e) {
+        if ($("#drop-zone").hasClass("onTop")) {
+            $("#drop-zone").removeClass("onTop")
+        }
+    });
 
     dropzone.addEventListener("dragover", function(e) {
         e.preventDefault();
         e.stopPropagation();
-
+        if (!$("#drop-zone").hasClass("onTop")) {
+            $("#drop-zone").addClass("onTop")
+        }
         e.dataTransfer.dropEffect = "copy";
     }, false);
 
     dropzone.addEventListener("drop", function(e) {
         e.preventDefault();
         e.stopPropagation();
-
+        if ($("#drop-zone").hasClass("onTop")) {
+            $("#drop-zone").removeClass("onTop")
+        }
         // let's just work with one file
         var file = e.dataTransfer.files[0];
         var reader = new FileReader();
