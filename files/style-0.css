@@ -4,6 +4,7 @@
 body {   /* make unscrollable, background image shuffle? */
     font-family: QuattroBold, Quattrocento, sans-serif;
     background: #16171A;
+    color:white;
 }
 button, input, select, textarea { font-family: inherit; } 
 a:focus, a.active:focus { outline: none;  outline: 0; } /* prevent outline of buttons when clicked */
@@ -23,6 +24,14 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
 } /* prevent outline of buttons when clicked */
 
 input[type='file'] {
+    background-color: #16171A;
+    border-radius: 10px;
+    /*color: transparent;*/
+
+    width:450px;
+    margin: 0px auto;
+}
+input[type='button'] {
     background-color: #16171A;
     border-radius: 10px;
     /*color: transparent;*/
@@ -60,7 +69,6 @@ html, #wrapper {
 }
 table{
     position:absolute;
-    top:10%;
     left:1%;
 }
 #editor{
@@ -68,8 +76,6 @@ table{
     top:0;
     left:0;
     width: 100%;
-    height: 0;
-    padding-top: 56.25%; /* (img-height / img-width * container-width) */
     /*background-image: url(../bg/screenshot_20150805_00017.jpg);
     background-size: contain;                      
     background-repeat: no-repeat;
@@ -78,7 +84,7 @@ table{
 #drop-zone {
     position:absolute;
     text-align: center;
-    top:18%;
+    top:10em;
     left:18%;
     width:64%;
     color:cyan;

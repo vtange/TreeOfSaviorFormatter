@@ -12,12 +12,7 @@ $(document).ready(function(){
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var row = $("<tr />");
-                        var cells = rows[i].split(",");
-                        for (var j = 0; j < cells.length; j++) {
-                            var cell = $("<td />");
-                            cell.html(cells[j]);
-                            row.append(cell);
-                        }
+                        row.html(rows[i]);
                         table.append(row);
                     }
                     $("#editor").html('');
