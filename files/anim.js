@@ -72,12 +72,15 @@ $(document).ready(function(){
                     var reader = new FileReader();
 
                     reader.onload = function(e) {
-                        var text = e.target.result;
-
-                        var output = text;
-
-                        // put the minified code in the results element
-                        results.innerHTML = output;
+                        var table = $("<table />");
+                        var rows = e.target.result.split("\n");
+                        for (var i = 0; i < rows.length; i++) {
+                            var row = $("<tr />");
+                            row.html(rows[i]);
+                            table.append(row);
+                        }
+                        $("#editor").html('');
+                        $("#editor").append(table);
                     }
 
                     reader.readAsText(file);
