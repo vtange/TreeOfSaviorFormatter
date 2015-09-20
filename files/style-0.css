@@ -6,16 +6,15 @@ body {   /* make unscrollable, background image shuffle? */
     background: #16171A;
     color:white;
 }
-button, input, select, textarea { font-family: inherit; } 
 a:focus, a.active:focus { outline: none;  outline: 0; } /* prevent outline of buttons when clicked */
 button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: none;
     outline: 0;
 } /* prevent outline of buttons when clicked */
 .btn-default:active, .btn-default:focus {
-   color:white;
-   background-color: transparent;
-   margin-bottom: 10px;
+    /*add default button styling here to reset it to normal when you untoggle*/
+   color:black;
+   background-color: white;
    -moz-user-select: none;
    -khtml-user-select: none;
    -webkit-user-select: none;
@@ -112,9 +111,10 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     position:fixed;
     bottom:0;
     left:0;
-    width:100%;
-    height:5%;
-    background: rgba(255,255,255,0.3)
+    width:350px;
+    height:4%;
+    background: rgba(255,255,255,0.3);
+    border-top-right-radius: 10px;
 }
 /*------ aides -------*/
 /*.left-bar {
