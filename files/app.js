@@ -3,14 +3,12 @@
   var app = angular.module('formatter', []);
   app.factory('linesFile', function() {
     var linesFile = {};
-    //linesFile.monstall = monstall;
-    //linesFile.modelObject = {};
     return linesFile;
   }); //end of service
-  app.controller('lineDisplay',['$scope','linesFile', function($scope, linesFile) {
+  app.controller('lineDisplay',['$scope', function($scope) {
 
     }]) //end of controller
-  app.controller('aideCtrl',['$scope','linesFile', function($scope, linesFile) {
+  app.controller('aideCtrl',[ function() {
 //toggle text block
       this.txtblock = 0;
       this.toggle = function(){

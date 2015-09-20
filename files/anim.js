@@ -8,10 +8,10 @@ $(document).ready(function(){
             if (typeof (FileReader) != "undefined") {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    var table = $("<table />");
+                    var table = $("<table></table>");
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
-                        var row = $("<tr />");
+                        var row = $("<tr data-ng-click='list.select()'></tr>");
                         row.html(rows[i]);
                         table.append(row);
                     }
@@ -115,7 +115,7 @@ $(document).ready(function(){
     div4.css("height", width4*0.26);
         
     //var div5 = $('.dialog');
-    //var width5 = div5.width();                not required as right-bar shows
+    //var width5 = div5.width();                not required, scales auto with txt block
     //div5.css("top", width*0.026);
     //div5.css("height", width5*0.1);
         
