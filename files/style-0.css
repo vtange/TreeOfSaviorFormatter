@@ -136,6 +136,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     color:white;
     border-radius:1.5em;
     opacity:0;
+    z-index:-999;
     background-color: rgba(0,0,0,0.8);
 }
 #party-quest{
@@ -185,6 +186,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     /*height:19.7%;       replaced with animated jquery*/
     width:51.8%;
     opacity:0;
+    z-index:-999;
     background-image: url(../bg/textblock.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -192,4 +194,5 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 /*------ angular ng-class dynamic MUST BE LAST-------*/
 .opac {
     opacity:1.0;
+    z-index:999;
 }
