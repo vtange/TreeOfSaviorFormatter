@@ -78,10 +78,10 @@ table tr{
     border:1px solid #555;
 }
 /* Cells in even rows (2,4,6...) are one color */
-table tr:nth-child(even) { background: #133; }  
+table tr:nth-child(even) { background: #133; }
 
 /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
-table tr:nth-child(odd) { background: #16171A; } 
+table tr:nth-child(odd) { background: #16171A; }
 
 table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cell effect! */
 #editor{
@@ -135,6 +135,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     width:21%;
     color:white;
     border-radius:1.5em;
+    opacity:0;
     background-color: rgba(0,0,0,0.8);
 }
 #party-quest{
@@ -183,8 +184,12 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     left:34.5%;
     /*height:19.7%;       replaced with animated jquery*/
     width:51.8%;
-   /*opacity:0.5;      /*debug*/
+    opacity:0;
     background-image: url(../bg/textblock.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+/*------ angular ng-class dynamic MUST BE LAST-------*/
+.opac {
+    opacity:1.0;
 }

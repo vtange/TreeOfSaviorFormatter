@@ -20,8 +20,8 @@
         <div id="editor">
             <div id="drop-zone"><h1>Drag &amp; Drop or <input type="file" id="fileUpload"><input type="button" id="upload" value="Upload" /></h1><!--shows only when no file--></div>
         </div>
-        <div id="aides">
-            <div class="right-bar">
+        <div id="aides" data-ng-controller="aideCtrl as aideCtrl">
+            <div class="right-bar" data-ng-class="{opac: aideCtrl.toggledOn2()}">
                 <span class="quest" id="party-quest">Party Quest (2)</span>
                 <span class="quest" id="charm-quest">Ameno's Quest</span>
                 <span class="quest" id="warp">Warp to completion area : Grow</span>
@@ -31,12 +31,16 @@
                 <span class="small" id="quest-what">Tree Guard Post<br>Enhancement against the<br> demon's soul</span>
                 <span class="small" id="quest-desc">Help Allen get rid of the demons <br>around the Wooden Guard Post <br>and charge its soul on the barrier.</span>
             </div>
-            <div class="text-block">
+            <div class="text-block" data-ng-class="{opac: aideCtrl.toggledOn()}">
                 <div class="dialog">
                     The eleders gave me many charms that will help me defeating the demons. <br>     I hope they help me.
                 </div>
             </div>
             <div id="footer">
+                <button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn()}" data-ng-click="aideCtrl.toggle()">Show Dialogue Block</button>
+                {{aideCtrl.txtblock}}
+                <button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn2()}" data-ng-click="aideCtrl.toggle2()">Show Quest Info</button>
+                {{aideCtrl.rbar}}
             </div>
         </div>
     </div>
