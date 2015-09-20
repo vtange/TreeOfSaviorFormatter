@@ -71,11 +71,15 @@ table{
     position:absolute;
     left:1%;
 }
+table tr{
+    border:1px solid #ddd;
+}
 #editor{
     position:absolute;
     top:0;
     left:0;
     width: 100%;
+    font-family: CabinMed;
     /*background-image: url(../bg/screenshot_20150805_00017.jpg);
     background-size: contain;                      
     background-repeat: no-repeat;
