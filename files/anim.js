@@ -70,19 +70,25 @@ $(document).ready(function(){
         }
         // let's just work with one file
         var file = e.dataTransfer.files[0];
-        var reader = new FileReader();
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
+        //console.log("Type: " + file.type);                        for debug use
+        //console.log(regex.test(file.name.toLowerCase()));
+        if (regex.test(file.name.toLowerCase())) {
+                    var reader = new FileReader();
 
-        reader.onload = function(e) {
-            var text = e.target.result;
+                    reader.onload = function(e) {
+                        var text = e.target.result;
 
-            var output = text;
+                        var output = text;
 
-            // put the minified code in the results element
-            results.innerHTML = output;
+                        // put the minified code in the results element
+                        results.innerHTML = output;
+                    }
+
+                    reader.readAsText(file);
+        } else {
+        alert("Please upload a valid CSV file.");
         }
-
-        reader.readAsText(file);
-
     }, false);
     
     
