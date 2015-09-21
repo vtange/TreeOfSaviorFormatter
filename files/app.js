@@ -102,14 +102,18 @@
 
       ////////////////  functions
         this.stuff = "";
+        this.dialogvers = "";
+        this.questvers = "";
         this.trustedHtml = "";
+        this.trustedHtml2 = "";
           this.select = function(e) {
               $('tr').removeClass()
               $(e.target).addClass("selected-line");
             this.stuff = $(e.target).html().replace(/\w+_\d+[\s+\t](?:\{memo X\})?(.+)/, '$1'); // get text, get rid of memo x
             this.stuff = this.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
-            this.trustedHtml = $sce.trustAsHtml(this.stuff); // required to ng-bind to index.html -> security check
-          console.log(this.stuff);
+            this.dialogvers = this.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
+            this.dialogvers = this.dialogvers.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
+            this.trustedHtml = $sce.trustAsHtml(this.dialogvers); // required to ng-bind to index.html -> security check for txt-block
         };
     }]) //end of controller
   app.controller('aideCtrl',[ function() {
