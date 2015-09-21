@@ -101,10 +101,10 @@
     }, false);
 
       ////////////////  functions
-
+        this.stuff = "";
           this.select = function(e) {
-            var stuff = $(e.target).html();
-            console.log(stuff);
+            this.stuff = $(e.target).html();
+          console.log(this.stuff);
         };
     }]) //end of controller
   app.controller('aideCtrl',[ function() {
