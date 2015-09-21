@@ -104,6 +104,8 @@
         this.stuff = "";
         this.trustedHtml = "";
           this.select = function(e) {
+              $('tr').removeClass()
+              $(e.target).addClass("selected-line");
             this.stuff = $(e.target).html().replace(/\w+_\d+[\s+\t](?:\{memo X\})?(.+)/, '$1'); // get text, get rid of memo x
             this.stuff = this.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
             this.trustedHtml = $sce.trustAsHtml(this.stuff); // required to ng-bind to index.html -> security check

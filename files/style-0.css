@@ -58,8 +58,8 @@ input[type='button'] {
     width:400%; /* controls text size in flowtype.js */
     /*font stuff*/
     /*no line spacing, it hurts the scaling*/
-    color:red/*#59493c*/;
-    text-shadow:0.06em 0.06em 0.06em red;
+    color:#49392c/*#59493c*/;
+    text-shadow:0.03em 0.03em 0.02em #59493c;
 }
 
 /*------ positions -------*/
@@ -195,4 +195,8 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 .opac {
     opacity:1.0;
     z-index:999;
+}
+
+.selected-line {
+    background: #008822 !important;/* overrides table background */
 }
