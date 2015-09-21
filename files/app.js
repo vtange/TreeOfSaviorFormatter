@@ -18,7 +18,7 @@
                     var table = $("<table></table>");
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
-                        var row = $('<tr data-id=' + i +' data-ng-click="lines.select($event)"></tr>');
+                        var row = $('<tr data-ng-click="lines.select($event)"></tr>');
                         row.html(rows[i]);
                         table.append(row);
                     }
@@ -85,7 +85,7 @@
                         var table = $("<table></table>");
                         var rows = e.target.result.split("\n");
                         for (var i = 0; i < rows.length; i++) {
-                            var row = $('<tr data-id=' + i +' data-ng-click="lines.select($event)"></tr>');
+                            var row = $('<tr data-ng-click="lines.select($event)"></tr>');
                             row.html(rows[i]);
                             table.append(row);
                         }
