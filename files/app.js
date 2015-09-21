@@ -5,7 +5,7 @@
     var linesFile = {};
     return linesFile;
   }); //end of service
-  app.controller('lineDisplay',['$scope', '$compile', function($scope, $compile) {
+  app.controller('lineDisplay',['$scope', '$compile', '$sce', function($scope, $compile, $sce) {
 
     ////////////////  file upload
 
@@ -102,8 +102,11 @@
 
       ////////////////  functions
         this.stuff = "";
+        this.trustedHtml = "";
           this.select = function(e) {
-            this.stuff = $(e.target).html();
+            this.stuff = $(e.target).html().replace(/\w+_\d+[\s+\t](?:\{memo X\})?(.+)/, '$1'); // get text, get rid of memo x
+            this.stuff = this.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
+            this.trustedHtml = $sce.trustAsHtml(this.stuff); // required to ng-bind to index.html -> security check
           console.log(this.stuff);
         };
     }]) //end of controller

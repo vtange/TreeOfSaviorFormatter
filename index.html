@@ -16,7 +16,7 @@
     <div id="wrapper">
         <div id="header">
             <h1>Tree of Savior Formatter</h1>
-            <h5>{{lines.stuff}}</h5>
+            <h5 ng-bind-html="lines.trustedHtml"></h5>
         </div>
         <div id="editor">
             <div id="drop-zone"><h1>Drag &amp; Drop or <input type="file" id="fileUpload"><input type="button" id="upload" value="Upload" /></h1><!--shows only when no file--></div>
