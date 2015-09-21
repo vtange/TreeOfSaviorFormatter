@@ -18,7 +18,7 @@
                     var table = $("<table></table>");
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
-                        var row = $('<tr data-id=' + i +' data-ng-click="lines.select()"></tr>');
+                        var row = $('<tr data-id=' + i +' data-ng-click="lines.select($event)"></tr>');
                         row.html(rows[i]);
                         table.append(row);
                     }
@@ -82,14 +82,15 @@
                     var reader = new FileReader();
 
                     reader.onload = function(e) {
-                        var table = $("<table />");
+                        var table = $("<table></table>");
                         var rows = e.target.result.split("\n");
                         for (var i = 0; i < rows.length; i++) {
-                            var row = $("<tr />");
+                            var row = $('<tr data-id=' + i +' data-ng-click="lines.select($event)"></tr>');
                             row.html(rows[i]);
                             table.append(row);
                         }
                         $("#editor").html('');
+                        $compile(table)($scope)  // links ^ dynamic html to controller.
                         $("#editor").append(table);
                     }
 
@@ -101,9 +102,10 @@
 
       ////////////////  functions
 
-          this.select = function(){
-            console.log("selected");
-          }
+          this.select = function(e) {
+            var stuff = $(e.target).html();
+            console.log(stuff);
+        };
     }]) //end of controller
   app.controller('aideCtrl',[ function() {
 //toggle text block
