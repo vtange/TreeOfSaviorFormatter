@@ -113,7 +113,9 @@
             this.stuff = this.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
             this.dialogvers = this.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
             this.dialogvers = this.dialogvers.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
+            this.questvers = this.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')//break every 120
             this.trustedHtml = $sce.trustAsHtml(this.dialogvers); // required to ng-bind to index.html -> security check for txt-block
+            this.trustedHtml2 = $sce.trustAsHtml(this.questvers); // required to ng-bind to index.html -> security check for right-bar quest desc
         };
     }]) //end of controller
   app.controller('aideCtrl',[ function() {
