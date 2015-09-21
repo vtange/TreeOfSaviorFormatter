@@ -139,6 +139,13 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     z-index:-999;
     background-color: rgba(0,0,0,0.8);
 }
+.rbar-cutoff {
+    width:90%;
+    height:100%;
+    background: rgba(255,255,255,0.0);
+    overflow: hidden;
+    /* position:relative;       will make text smaller, readjust tommorow */
+}
 #party-quest{
     position:absolute;
     left:12.8%;
