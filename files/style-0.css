@@ -19,7 +19,6 @@ button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
    -khtml-user-select: none;
    -webkit-user-select: none;
    -o-user-select: none;
-   user-select: none;
 } /* prevent outline of buttons when clicked */
 
 input[type='file'] {
@@ -88,10 +87,11 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     top:0;
     left:0;
     width: 100%;
+    /*height:1080px;       use to activate background */
     font-family: CabinMed;
-    /*background-image: url(../bg/screenshot_20150805_00017.jpg);
-    background-size: contain;                      
-    background-repeat: no-repeat;
+    /*background-image: url(../bg/screenshot_20150805_00017.jpg);*/
+    /*background-size: contain;*/
+    /*background-repeat: no-repeat;*/
     /*background-position: center center;             optionally, center the image */
 }
 #drop-zone {
@@ -140,50 +140,51 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     background-color: rgba(0,0,0,0.8);
 }
 .rbar-cutoff {
-    width:90%;
+    width:95.3%;
     height:100%;
     background: rgba(255,255,255,0.0);
     overflow: hidden;
-    /* position:relative;       will make text smaller, readjust tommorow */
+    position:relative;
 }
 #party-quest{
     position:absolute;
-    left:12.8%;
+    left:14.0%;
+    top:0.5%;
 }
 #charm-quest{
     position:absolute;
-    left:2.8%;
-    top:5%;
+    left:3.8%;
+    top:5.5%;
 }
 #warp{
     position:absolute;
-    left:20.8%;
+    left:22.0%;
     top:13.4%;
 }
 #sanzobar-quest{
     position:absolute;
-    left:2.8%;
+    left:3.8%;
     top:20.8%;
 }
 #no-time{
     position:absolute;
-    left:14.8%;
+    left:16.8%;
     top:30.2%;
 }
 #quest-area{
     position:absolute;
-    left:17.8%;
+    left:19.0%;
     top:35%;
 }
 #quest-what{
     position:absolute;
-    left:17.8%;
-    top:40%;
+    left:19.0%;
+    top:39.8%;
 }
 #quest-desc{
     position:absolute;
-    left:17.8%;
-    top:51.0%;
+    left:19.0%;
+    top:50.0%;
 }
 .text-block {
     position:fixed;

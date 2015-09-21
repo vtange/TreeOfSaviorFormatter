@@ -42,21 +42,21 @@ $(document).ready(function(){
        maximum   : 9000,
        minFont   : 1,
        maxFont   : 48.25,
-       fontRatio : 200
+       fontRatio : 190
     });
     $('.title').flowtype({
        minimum   : 10,
        maximum   : 9000,
        minFont   : 1,
        maxFont   : 48.25,
-       fontRatio : 200
+       fontRatio : 190
     });
     $('.small').flowtype({
        minimum   : 10,
        maximum   : 9000,
        minFont   : 1,
        maxFont   : 48.25,
-       fontRatio : 200
+       fontRatio : 190
     });
 };
 $(document).ready(jqUpdateSize);    // When the page first loads
