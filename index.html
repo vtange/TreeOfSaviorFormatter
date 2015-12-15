@@ -17,31 +17,31 @@
             <h1>Tree of Savior Formatter</h1>
         </div>
 	    <div id="wrapper">
-        <div id="editor">
-            <div id="drop-zone"><h1>File1</h1><h2>Drag &amp; Drop or <input type="file" id="fileUpload"><input type="button" id="upload" value="Upload" /></h2><!--shows only when no file--></div>
-        </div>
-        <div id="aides" data-ng-controller="aideCtrl as aideCtrl">
-            <div class="right-bar" data-ng-class="{opac: aideCtrl.toggledOn2()}">
-                <div class="rbar-cutoff">
-                <span class="quest" id="party-quest">Party Quest (2)</span>
-                <span class="quest" id="charm-quest">Ameno's Quest</span>
-                <span class="quest" id="warp">Warp to completion area : Grow</span>
-                <span class="quest" id="sanzobar-quest">Spadow's Quest</span>
-                <span class="title" id="no-time">I have no time...</span>
-                <span class="small" id="quest-area">Area : Nefritas Cliff</span>
-                <span class="small" id="quest-what">Tree Guard Post<br>Enhancement against the<br> demon's soul</span>
-                <span class="small" id="quest-desc" data-ng-bind-html="trustedHtml2">Help Allen get rid of the demons <!--demo--<br>-->around the Wooden Guard Post <!--text--<br>-->and charge its soul on the barrier.</span>
-                </div>
-            </div>
-            <div class="text-block" data-ng-class="{opac: aideCtrl.toggledOn()}">
-                <div class="dialog" data-ng-bind-html="trustedHtml">
-                    <!--The eleders gave me many charms that will help me defeating the demons. <br>     I hope they help me.---initial debug text, type on purpose-->
-                </div>
-            </div>
-            <div id="footer">
-                <button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn()}" data-ng-click="aideCtrl.toggle()">Show Dialogue Block</button>
-                <button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn2()}" data-ng-click="aideCtrl.toggle2()">Show Quest Info</button>
-            </div>
-        </div>
+			<div id="drop-zone"><h1>File1</h1><h2>Drag &amp; Drop or <input type="file" id="fileUpload"><input type="button" id="upload" value="Upload" /></h2><!--shows only when no file--></div>
+			<div id="editor">
+        	</div>
+			<div id="aides" data-ng-controller="aideCtrl as aideCtrl">
+				<div class="right-bar" data-ng-class="{opac: aideCtrl.toggledOn2()}">
+					<div class="rbar-cutoff">
+					<span class="quest" id="party-quest">Party Quest (2)</span>
+					<span class="quest" id="charm-quest">Ameno's Quest</span>
+					<span class="quest" id="warp">Warp to completion area : Grow</span>
+					<span class="quest" id="sanzobar-quest">Spadow's Quest</span>
+					<span class="title" id="no-time">I have no time...</span>
+					<span class="small" id="quest-area">Area : Nefritas Cliff</span>
+					<span class="small" id="quest-what">Tree Guard Post<br>Enhancement against the<br> demon's soul</span>
+					<span class="small" id="quest-desc" data-ng-bind-html="trustedHtml2">Help Allen get rid of the demons <!--demo--<br>-->around the Wooden Guard Post <!--text--<br>-->and charge its soul on the barrier.</span>
+					</div>
+				</div>
+				<div class="text-block" data-ng-class="{opac: aideCtrl.toggledOn()}">
+					<div class="dialog" data-ng-bind-html="trustedHtml">
+						<!--The eleders gave me many charms that will help me defeating the demons. <br>     I hope they help me.---initial debug text, type on purpose-->
+					</div>
+				</div>
+				<div id="footer">
+					<button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn()}" data-ng-click="aideCtrl.toggle()">Show Dialogue Block</button>
+					<button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn2()}" data-ng-click="aideCtrl.toggle2()">Show Quest Info</button>
+				</div>
+			</div>
     </div>
 </body>
