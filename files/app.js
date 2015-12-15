@@ -22,7 +22,24 @@
                     $compile(table)($scope)  // links ^ dynamic html to controller.
                     $("#editor").append(table);
 	}
-	  
+	var generateTable_drop = function(eventTarget){
+        // let's just work with one file
+        var file = eventTarget.dataTransfer.files[0];
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
+        //console.log("Type: " + file.type);                        for debug use
+        //console.log(regex.test(file.name.toLowerCase()));
+        if (regex.test(file.name.toLowerCase())) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                            generateTable(e);
+                    }
+
+                    reader.readAsText(file);
+        } else {
+        alert("Please upload a valid CSV file.");
+        }
+	}
     $("#upload").bind("click", function () {
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
         if (regex.test($("#fileUpload").val().toLowerCase())) {
@@ -77,22 +94,35 @@
         if ($("#drop-zone").hasClass("onTop")) {
             $("#drop-zone").removeClass("onTop")
         }
-        // let's just work with one file
-        var file = e.dataTransfer.files[0];
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
-        //console.log("Type: " + file.type);                        for debug use
-        //console.log(regex.test(file.name.toLowerCase()));
-        if (regex.test(file.name.toLowerCase())) {
-                    var reader = new FileReader();
+		generateTable_drop(e)
+    }, false);
+	  
+	  
+	//dropzone2 upload
+    var dropzone2 = document.querySelector("#drop-zone2");
 
-                    reader.onload = function(e) {
-                            generateTable(e);
-                    }
-
-                    reader.readAsText(file);
-        } else {
-        alert("Please upload a valid CSV file.");
+    dropzone2.addEventListener('dragleave', function (e) {
+        if ($("#drop-zone2").hasClass("onTop")) {
+            $("#drop-zone2").removeClass("onTop")
         }
+    });
+
+    dropzone2.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!$("#drop-zone2").hasClass("onTop")) {
+            $("#drop-zone2").addClass("onTop")
+        }
+        e.dataTransfer.dropEffect = "copy";//mouse icon
+    }, false);
+
+    dropzone2.addEventListener("drop", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if ($("#drop-zone2").hasClass("onTop")) {
+            $("#drop-zone2").removeClass("onTop")
+        }
+        generateTable_drop(e)
     }, false);
 
       ////////////////  selected line preparation for dialog box
