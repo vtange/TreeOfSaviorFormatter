@@ -55,7 +55,7 @@
 
 	//dropzone1 upload
     var dropzone = document.querySelector("#drop-zone");
-    var results = document.querySelector("#editor");
+
     dropzone.addEventListener('dragleave', function (e) {
         if ($("#drop-zone").hasClass("onTop")) {
             $("#drop-zone").removeClass("onTop")
