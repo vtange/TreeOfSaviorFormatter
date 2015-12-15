@@ -101,25 +101,33 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     position:relative;
     top:0;
     left:0;
-	display: inline-block;
-    width: 50%;
-    height:100%;
     font-family: CabinMed;
     /*background-image: url(../bg/screenshot_20150805_00017.jpg);*/
     /*background-size: contain;*/
     /*background-repeat: no-repeat;*/
     /*background-position: center center;             optionally, center the image */
 }
-#drop-zone {
+.drop-zone {
     position:relative;
     text-align: center;
 	height:90vh;
-	width:100%;
-    color:cyan;
-    border: 1.8em dashed cyan;
+	width:50%;
+	display: inline-block;
     border-radius: 3.6em;
 }
+#drop-zone {
+	color:cyan;
+    border: 1.8em dashed cyan;
+}
+#drop-zone2 {
+	color:lightgoldenrodyellow;
+    border: 1.8em dashed lightgoldenrodyellow;
+}
 #drop-zone.onTop {border: 1.8em dashed lime;}
+#drop-zone2.onTop {border: 1.8em dashed orange;}
+
+
+
 
 #footer {
     display:block;
