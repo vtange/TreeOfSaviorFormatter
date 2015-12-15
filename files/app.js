@@ -12,7 +12,7 @@
     ////////////////  file upload
     var generateTable = function(eventTarget){
 		            var table = $("<table></table>");
-                    var rows = e.target.result.split("\n");
+                    var rows = eventTarget.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var row = $('<tr data-ng-click="lines.select($event)"></tr>');
                         row.html(rows[i]);
