@@ -3,10 +3,12 @@
   var app = angular.module('formatter', []);
   app.factory('linesFile', function() {
     var linesFile = {};
+	  linesFile.file1 = [];
+	  linesFile.file2 = [];
     return linesFile;
   }); //end of service
-  app.controller('lineDisplay',['$scope', '$compile', '$sce', function($scope, $compile, $sce) {
-
+  app.controller('lineDisplay',['$scope', '$compile', '$sce', 'linesFile', function($scope, $compile, $sce, linesFile) {
+	var linesFile = linesFile;
     ////////////////  file upload
 
     $("#upload").bind("click", function () {
@@ -34,7 +36,6 @@
             alert("Please upload a valid CSV file.");
         }
     });
-
 
     ////////////////  drag and drop
 

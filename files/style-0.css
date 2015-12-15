@@ -1,10 +1,20 @@
 @import url('http://fonts.googleapis.com/css?family=Quattrocento');   /* Load Font */
 @font-face { font-family: QuattroBold; src: url('font/imcm_original.ttf'); }
 @font-face { font-family: CabinMed; src: url('font/Cabin-Medium-TTF.ttf'); }
+*{
+    box-sizing: border-box;/*reset page*/
+}
+body {
+  margin: 0;/*reset page*/
+  background-color: #9bd;
+  width:inherit;
+  height:inherit;
+}
 body {   /* make unscrollable, background image shuffle? */
     font-family: QuattroBold, Quattrocento, sans-serif;
     background: #16171A;
     color:white;
+	
 }
 a:focus, a.active:focus { outline: none;  outline: 0; } /* prevent outline of buttons when clicked */
 button:focus, .btn:focus, .btn:active:focus, .btn.active:focus {
@@ -64,6 +74,9 @@ input[type='button'] {
 /*------ positions -------*/
 html, #wrapper {
     overflow-x: hidden;
+  position: relative;
+  height: 100%;
+  width:100%;
 }
 table{
     margin-top:6%;
@@ -83,11 +96,11 @@ table tr:nth-child(odd) { background: #16171A; }
 
 table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cell effect! */
 #editor{
-    position:absolute;
+    position:relative;
     top:0;
     left:0;
-    width: 100%;
-    /*height:1080px;       use to activate background */
+    width: 50%;
+    height:100%;
     font-family: CabinMed;
     /*background-image: url(../bg/screenshot_20150805_00017.jpg);*/
     /*background-size: contain;*/
