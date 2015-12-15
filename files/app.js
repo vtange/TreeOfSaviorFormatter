@@ -10,14 +10,8 @@
   app.controller('lineDisplay',['$scope', '$compile', '$sce', 'linesFile', function($scope, $compile, $sce, linesFile) {
 	var linesFile = linesFile;
     ////////////////  file upload
-
-    $("#upload").bind("click", function () {
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
-        if (regex.test($("#fileUpload").val().toLowerCase())) {
-            if (typeof (FileReader) != "undefined") {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    var table = $("<table></table>");
+    var generateTable = function(eventTarget){
+		            var table = $("<table></table>");
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var row = $('<tr data-ng-click="lines.select($event)"></tr>');
@@ -27,6 +21,16 @@
                     $("#editor").html('');
                     $compile(table)($scope)  // links ^ dynamic html to controller.
                     $("#editor").append(table);
+	}
+	  
+	  
+    $("#upload").bind("click", function () {
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
+        if (regex.test($("#fileUpload").val().toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    generateTable(e);
                 }
                 reader.readAsText($("#fileUpload")[0].files[0]);
             } else {
@@ -83,16 +87,7 @@
                     var reader = new FileReader();
 
                     reader.onload = function(e) {
-                        var table = $("<table></table>");
-                        var rows = e.target.result.split("\n");
-                        for (var i = 0; i < rows.length; i++) {
-                            var row = $('<tr data-ng-click="lines.select($event)"></tr>');
-                            row.html(rows[i]);
-                            table.append(row);
-                        }
-                        $("#editor").html('');
-                        $compile(table)($scope)  // links ^ dynamic html to controller.
-                        $("#editor").append(table);
+                            generateTable(e);
                     }
 
                     reader.readAsText(file);
