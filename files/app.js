@@ -23,7 +23,6 @@
                     $("#editor").append(table);
 	}
 	  
-	  
     $("#upload").bind("click", function () {
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
         if (regex.test($("#fileUpload").val().toLowerCase())) {
@@ -42,12 +41,9 @@
     });
 
     ////////////////  drag and drop
-
+	// prevent missed drops == load file
     var page = document.querySelector("html");
-    var dropzone = document.querySelector("#drop-zone");
-    var results = document.querySelector("#editor");
-
-    page.addEventListener("dragover", function(e) {
+	page.addEventListener("dragover", function(e) {
         e.preventDefault();
         e.stopPropagation();
         e.dataTransfer.dropEffect = "none";
@@ -57,6 +53,9 @@
         e.stopPropagation();
     }, false);
 
+	//dropzone1 upload
+    var dropzone = document.querySelector("#drop-zone");
+    var results = document.querySelector("#editor");
     dropzone.addEventListener('dragleave', function (e) {
         if ($("#drop-zone").hasClass("onTop")) {
             $("#drop-zone").removeClass("onTop")
@@ -96,7 +95,7 @@
         }
     }, false);
 
-      ////////////////  functions
+      ////////////////  selected line preparation for dialog box
         $scope.stuff = "";
         $scope.dialogvers = "";
         $scope.questvers = "";
