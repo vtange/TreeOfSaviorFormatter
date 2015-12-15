@@ -56,6 +56,22 @@
             alert("Please upload a valid CSV file.");
         }
     });
+    $("#upload2").bind("click", function () {
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
+        if (regex.test($("#fileUpload2").val().toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    generateTable(e);
+                }
+                reader.readAsText($("#fileUpload2")[0].files[0]);
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid CSV file.");
+        }
+    });
 
     ////////////////  drag and drop
 	// prevent missed drops == load file
