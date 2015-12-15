@@ -74,9 +74,11 @@ input[type='button'] {
 /*------ positions -------*/
 html, #wrapper {
     overflow-x: hidden;
-  position: relative;
-  height: 100%;
-  width:100%;
+}
+#wrapper {
+    overflow-x: hidden;
+	width:inherit;
+  	height:inherit;
 }
 table{
     margin-top:6%;
@@ -99,6 +101,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     position:relative;
     top:0;
     left:0;
+	display: inline-block;
     width: 50%;
     height:100%;
     font-family: CabinMed;
@@ -108,11 +111,10 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     /*background-position: center center;             optionally, center the image */
 }
 #drop-zone {
-    position:absolute;
+    position:relative;
     text-align: center;
-    top:10em;
-    left:18%;
-    width:64%;
+	height:90vh;
+	width:100%;
     color:cyan;
     border: 1.8em dashed cyan;
     border-radius: 3.6em;

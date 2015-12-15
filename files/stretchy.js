@@ -10,11 +10,7 @@ $(document).ready(function(){
     //var div1 = $('.left-bar');
     //var width1 = div1.width();                will do if requested
     //div1.css("height", width1*2.28);
-        
-    var div2 = $('#drop-zone');
-    var width2 = div2.width();
-    div2.css("height", width2*0.56);
-        
+
     var div3 = $('.right-bar');
     var width3 = div3.width();
     div3.css("top", width*(0.222));
