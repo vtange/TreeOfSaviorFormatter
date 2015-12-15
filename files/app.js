@@ -14,7 +14,7 @@
 		            var table = $("<table></table>");
                     var rows = eventTarget.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
-                        var row = $('<tr data-ng-click="lines.select($event)"></tr>');
+                        var row = $('<tr data-ng-click="select($event)"></tr>');
                         row.html(rows[i]);
                         table.append(row);
                     }
@@ -69,7 +69,7 @@
         if (!$("#drop-zone").hasClass("onTop")) {
             $("#drop-zone").addClass("onTop")
         }
-        e.dataTransfer.dropEffect = "copy";
+        e.dataTransfer.dropEffect = "copy";//mouse icon
     }, false);
 
     dropzone.addEventListener("drop", function(e) {
@@ -97,21 +97,21 @@
     }, false);
 
       ////////////////  functions
-        this.stuff = "";
-        this.dialogvers = "";
-        this.questvers = "";
-        this.trustedHtml = "";
-        this.trustedHtml2 = "";
-          this.select = function(e) {
+        $scope.stuff = "";
+        $scope.dialogvers = "";
+        $scope.questvers = "";
+        $scope.trustedHtml = "";
+        $scope.trustedHtml2 = "";
+          $scope.select = function(e) {
               $('tr').removeClass()
               $(e.target).addClass("selected-line");
-            this.stuff = $(e.target).html().replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
-            this.stuff = this.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
-            this.dialogvers = this.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
-            this.dialogvers = this.dialogvers.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
-            this.questvers = this.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')//break every 120
-            this.trustedHtml = $sce.trustAsHtml(this.dialogvers); // required to ng-bind to index.html -> security check for txt-block
-            this.trustedHtml2 = $sce.trustAsHtml(this.questvers); // required to ng-bind to index.html -> security check for right-bar quest desc
+            $scope.stuff = $(e.target).html().replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
+            $scope.stuff = $scope.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
+            $scope.dialogvers = $scope.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
+            $scope.dialogvers = $scope.dialogvers.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
+            $scope.questvers = $scope.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')//break every 120
+            $scope.trustedHtml = $sce.trustAsHtml($scope.dialogvers); // required to ng-bind to index.html -> security check for txt-block
+            $scope.trustedHtml2 = $sce.trustAsHtml($scope.questvers); // required to ng-bind to index.html -> security check for right-bar quest desc
         };
     }]) //end of controller
   app.controller('aideCtrl',[ function() {
