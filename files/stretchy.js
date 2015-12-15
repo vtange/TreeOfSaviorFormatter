@@ -7,9 +7,6 @@ $(document).ready(function(){
     // Get the dimensions of the viewport
     var width = $(window).width();    //used for repositioning, width used to take advantage of css:contain
         //for every element, make a height to width ratio.
-    //var div1 = $('.left-bar');
-    //var width1 = div1.width();                will do if requested
-    //div1.css("height", width1*2.28);
 
     var div3 = $('.right-bar');
     var width3 = div3.width();
@@ -20,11 +17,6 @@ $(document).ready(function(){
     var width4 = div4.width();
     div4.css("top", width*0.41);
     div4.css("height", width4*0.26);
-        
-    //var div5 = $('.dialog');
-    //var width5 = div5.width();                not required, scales auto with txt block
-    //div5.css("top", width*0.026);
-    //div5.css("height", width5*0.1);
         
     $('.dialog').flowtype({
        minimum   : 10,
