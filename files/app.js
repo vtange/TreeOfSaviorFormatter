@@ -1,14 +1,10 @@
 (function() {
     //start of function
   var app = angular.module('formatter', []);
-  app.factory('linesFile', function() {
-    var linesFile = {};
-	  linesFile.file1 = [];
-	  linesFile.file2 = [];
-    return linesFile;
-  }); //end of service
-  app.controller('lineDisplay',['$scope', '$compile', '$sce', 'linesFile', function($scope, $compile, $sce, linesFile) {
-	$scope.memory = linesFile;
+  app.controller('lineDisplay',['$scope', '$compile', '$sce', function($scope, $compile, $sce) {
+	$scope.file1 = ["hello","heelo"];
+	$scope.file2 = [];
+	  
     ////////////////  file upload
     var generateTable = function(eventTarget){
 		            var table = $("<table></table>");
@@ -42,8 +38,8 @@
 	}
 	var generateTableAng = function(eventTarget, side){
 					//remove dropzone, depend on side (editor will generate via ngrepeat)
-					if(side === 1){$( "#drop-zone" ).remove();linesFile.file1 = eventTarget.target.result.split("\n");console.log(linesFile);$scope.memory = linesFile;console.log($scope.memory)}
-					else{$( "#drop-zone2" ).remove();linesFile.file2 = eventTarget.target.result.split("\n");$scope.memory = linesFile;}
+					if(side === 1){$( "#drop-zone" ).remove();$scope.file1 = eventTarget.target.result.split("\n");$scope.$apply()}
+					else{$( "#drop-zone2" ).remove();$scope.file2 = eventTarget.target.result.split("\n");$scope.$apply()};
 	}
     $("#upload").on("click", function () {
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;

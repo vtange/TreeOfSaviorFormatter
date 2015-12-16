@@ -76,7 +76,6 @@ html, #wrapper {
     overflow-x: hidden;
 }
 #wrapper {
-    overflow-x: hidden;
 	width:inherit;
   	height:inherit;
 }
@@ -97,13 +96,8 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 
 #editors{
     position:relative;
-    top:0;
-    left:0;
+	overflow-y: hidden;
     font-family: CabinMed;
-    /*background-image: url(../bg/screenshot_20150805_00017.jpg);*/
-    /*background-size: contain;*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: center center;             optionally, center the image */
 }
 .editor{
 	width:50%;
@@ -116,6 +110,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 #drops{
 	position: fixed;
 	width:100vw;
+	z-index: 800;
 }
 .drop-zone {
     position:absolute;

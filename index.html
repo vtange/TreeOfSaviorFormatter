@@ -22,15 +22,14 @@
 				<div id="drop-zone2" class="drop-zone"><h1>File2</h1><h2>Drag &amp; Drop or <input type="file" id="fileUpload2"><input type="button" id="upload2" value="Upload" /></h2><!--shows only when no file--></div>
 			</div>
 			<div id="editors">
-				{{memory}}
 				<div id="editor" class="editor">
 					<table>
-						<tr data-ng-repeat="line in linesFile.file1" data-ng-click="select($event)">{{line}}</tr>
+						<tr data-ng-repeat="line in file1" data-ng-click="select($event)"><td>{{line}}</td></tr>
 					</table>
         		</div>
 				<div id="editor2" class="editor">
 					<table>
-						<tr data-ng-repeat="line in linesFile.file2" data-ng-click="select($event)">{{line}}</tr>
+						<tr data-ng-repeat="line in file2" data-ng-click="select($event)"><td>{{line}}</td></tr>
 					</table>
         		</div>
         	</div>
@@ -44,7 +43,7 @@
 					<span class="title" id="no-time">I have no time...</span>
 					<span class="small" id="quest-area">Area : Nefritas Cliff</span>
 					<span class="small" id="quest-what">Tree Guard Post<br>Enhancement against the<br> demon's soul</span>
-					<span class="small" id="quest-desc" data-ng-bind-html="trustedHtml2">Help Allen get rid of the demons <!--demo--<br>-->around the Wooden Guard Post <!--text--<br>-->and charge its soul on the barrier.</span>
+					<span class="small" id="quest-desc" data-ng-bind-html="trustedHtml2">Help Allen get rid of the demons around the Wooden Guard Post and charge its soul on the barrier.</span>
 					</div>
 				</div>
 				<div class="text-block" data-ng-class="{opac: aideCtrl.toggledOn()}">
