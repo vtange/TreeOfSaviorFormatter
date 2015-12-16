@@ -2,7 +2,7 @@
     //start of function
   var app = angular.module('formatter', []);
   app.controller('lineDisplay',['$scope', '$compile', '$sce', function($scope, $compile, $sce) {
-	$scope.file1 = ["hello","heelo"];
+	$scope.file1 = [];
 	$scope.file2 = [];
 	  
     ////////////////  file upload

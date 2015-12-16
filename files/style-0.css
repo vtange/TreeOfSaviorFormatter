@@ -96,15 +96,14 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 
 #editors{
     position:relative;
-	overflow-y: hidden;
     font-family: CabinMed;
 }
 .editor{
+	vertical-align: text-top;
+	display: inline-block;
 	width:50%;
 }
 #editor2{
-	position: absolute;
-	left:50%;
 }
 
 #drops{
@@ -117,6 +116,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     text-align: center;
 	width:50%;
 	height:90vh;
+	background-color: transparent;
     border-radius: 3.6em;
 }
 #drop-zone {
