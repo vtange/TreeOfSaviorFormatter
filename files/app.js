@@ -24,42 +24,32 @@
         alert("Please upload a valid CSV file.");
         }
 	}
+	var uploadedFileCheck = function(str, side){
+		var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
+        if (regex.test($(str).val().toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    generateTableAng(e,side);
+                }
+                reader.readAsText($(str)[0].files[0]);
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid CSV file.");
+        }
+	}
 	var generateTableAng = function(eventTarget, side){
 					//remove dropzone, depend on side (editor will generate via ngrepeat)
 					if(side === 1){$( "#drop-zone" ).remove();$scope.file1 = eventTarget.target.result.split("\n");$scope.$apply()}
 					else{$( "#drop-zone2" ).remove();$scope.file2 = eventTarget.target.result.split("\n");$scope.$apply()};
 	}
     $("#upload").on("click", function () {
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
-        if (regex.test($("#fileUpload").val().toLowerCase())) {
-            if (typeof (FileReader) != "undefined") {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    generateTableAng(e,1);
-                }
-                reader.readAsText($("#fileUpload")[0].files[0]);
-            } else {
-                alert("This browser does not support HTML5.");
-            }
-        } else {
-            alert("Please upload a valid CSV file.");
-        }
+		uploadedFileCheck("#fileUpload",1);
     });
     $("#upload2").on("click", function () {
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
-        if (regex.test($("#fileUpload2").val().toLowerCase())) {
-            if (typeof (FileReader) != "undefined") {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    generateTableAng(e,2);
-                }
-                reader.readAsText($("#fileUpload2")[0].files[0]);
-            } else {
-                alert("This browser does not support HTML5.");
-            }
-        } else {
-            alert("Please upload a valid CSV file.");
-        }
+        uploadedFileCheck("#fileUpload2",2);
     });
 
     ////////////////  drag and drop
@@ -143,7 +133,7 @@
             $scope.stuff = $scope.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
             $scope.dialogvers = $scope.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
             $scope.dialogvers = $scope.dialogvers.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
-            $scope.questvers = $scope.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')//break every 120
+            $scope.questvers = $scope.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')//break every 45
             $scope.trustedHtml = $sce.trustAsHtml($scope.dialogvers); // required to ng-bind to index.html -> security check for txt-block
             $scope.trustedHtml2 = $sce.trustAsHtml($scope.questvers); // required to ng-bind to index.html -> security check for right-bar quest desc
         };
