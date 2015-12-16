@@ -22,9 +22,16 @@
 				<div id="drop-zone2" class="drop-zone"><h1>File2</h1><h2>Drag &amp; Drop or <input type="file" id="fileUpload2"><input type="button" id="upload2" value="Upload" /></h2><!--shows only when no file--></div>
 			</div>
 			<div id="editors">
-				<div id="editor">
+				{{memory}}
+				<div id="editor" class="editor">
+					<table>
+						<tr data-ng-repeat="line in linesFile.file1" data-ng-click="select($event)">{{line}}</tr>
+					</table>
         		</div>
-				<div id="editor2">
+				<div id="editor2" class="editor">
+					<table>
+						<tr data-ng-repeat="line in linesFile.file2" data-ng-click="select($event)">{{line}}</tr>
+					</table>
         		</div>
         	</div>
 			<div id="aides" data-ng-controller="aideCtrl as aideCtrl">

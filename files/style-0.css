@@ -93,9 +93,9 @@ table tr{
 
 table tr:nth-child(even) { background: #133; }/* Cells in even rows (2,4,6...) are one color */
 table tr:nth-child(odd) { background: #16171A; }/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
-
 table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cell effect! */
-#editor{
+
+#editors{
     position:relative;
     top:0;
     left:0;
@@ -105,6 +105,14 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     /*background-repeat: no-repeat;*/
     /*background-position: center center;             optionally, center the image */
 }
+.editor{
+	width:50%;
+}
+#editor2{
+	position: absolute;
+	left:50%;
+}
+
 #drops{
 	position: fixed;
 	width:100vw;
@@ -114,7 +122,6 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     text-align: center;
 	width:50%;
 	height:90vh;
-	display: inline-block;
     border-radius: 3.6em;
 }
 #drop-zone {

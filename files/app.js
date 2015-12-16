@@ -8,7 +8,7 @@
     return linesFile;
   }); //end of service
   app.controller('lineDisplay',['$scope', '$compile', '$sce', 'linesFile', function($scope, $compile, $sce, linesFile) {
-	var linesFile = linesFile;
+	$scope.memory = linesFile;
     ////////////////  file upload
     var generateTable = function(eventTarget){
 		            var table = $("<table></table>");
@@ -41,10 +41,9 @@
         }
 	}
 	var generateTableAng = function(eventTarget, side){
-                    linesFile.file1 = eventTarget.target.result.split("\n");
 					//remove dropzone, depend on side (editor will generate via ngrepeat)
-					if(side === 1){$( "#drop-zone" ).remove();}
-					else{$( "#drop-zone2" ).remove();}
+					if(side === 1){$( "#drop-zone" ).remove();linesFile.file1 = eventTarget.target.result.split("\n");console.log(linesFile);$scope.memory = linesFile;console.log($scope.memory)}
+					else{$( "#drop-zone2" ).remove();linesFile.file2 = eventTarget.target.result.split("\n");$scope.memory = linesFile;}
 	}
     $("#upload").on("click", function () {
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
