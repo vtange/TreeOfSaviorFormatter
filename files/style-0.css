@@ -80,10 +80,7 @@ html, #wrapper {
   	height:inherit;
 }
 table{
-    margin-top:4%;
-    margin-left:1%;
-    margin-right:1%;
-    margin-bottom: 20%;
+    margin:4% 0.5% 20% 1.5%;
     line-height: 2em;
 }
 table tr{
