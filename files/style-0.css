@@ -101,8 +101,6 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 	display: inline-block;
 	width:50%;
 }
-#editor2{
-}
 
 #drops{
 	position: fixed;

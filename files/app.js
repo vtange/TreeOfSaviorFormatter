@@ -4,7 +4,7 @@
   app.controller('lineDisplay',['$scope', '$sce', function($scope, $sce) {
 	$scope.file1 = [];
 	$scope.file2 = [];
-	  
+	$scope.lines = [];
     ////////////////  file upload
 	var generateTable_drop = function(eventTarget, side){
         // let's just work with one file
@@ -38,10 +38,29 @@
             alert("Please upload a valid CSV file.");
         }
 	}
+	var generateCombined = function(){
+		$scope.file1.length > $scope.file2.length ? $scope.lines = Array($scope.file1.length) : $scope.lines = Array($scope.file2.length)
+		for(var i = 0; i < $scope.lines.length; i++){
+			$scope.lines[i] = {
+				[0]:$scope.file1[i],
+				[1]:$scope.file2[i]
+			};
+		}
+	}
 	var generateTableAng = function(eventTarget, side){
 					//remove dropzone, depend on side (editor will generate via ngrepeat)
-					if(side === 1){$( "#drop-zone" ).remove();$scope.file1 = eventTarget.target.result.split("\n");$scope.$apply()}
-					else{$( "#drop-zone2" ).remove();$scope.file2 = eventTarget.target.result.split("\n");$scope.$apply()};
+					if(side === 1){
+						$( "#drop-zone" ).remove();
+						$scope.file1 = eventTarget.target.result.split("\n");
+						$scope.$apply()
+						generateCombined();
+					}
+					else{
+						$( "#drop-zone2" ).remove();
+						$scope.file2 = eventTarget.target.result.split("\n");
+						$scope.$apply()
+						generateCombined();
+					};
 	}
     $("#upload").on("click", function () {
 		uploadedFileCheck("#fileUpload",1);
