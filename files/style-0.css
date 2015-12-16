@@ -110,7 +110,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 	width:100vw;
 }
 .drop-zone {
-    position:relative;
+    position:absolute;
     text-align: center;
 	width:50%;
 	height:90vh;
@@ -122,6 +122,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     border: 1.8em dashed cyan;
 }
 #drop-zone2 {
+	left:50%;
 	color:lightgoldenrodyellow;
     border: 1.8em dashed lightgoldenrodyellow;
 }
@@ -225,7 +226,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     background-repeat: no-repeat;
 }
 /*------ angular ng-class dynamic MUST BE LAST-------*/
-.opac {
+.opac {			/* hide unhide aide*/
     opacity:1.0;
     z-index:999;
 }

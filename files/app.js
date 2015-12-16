@@ -40,13 +40,19 @@
         alert("Please upload a valid CSV file.");
         }
 	}
-    $("#upload").bind("click", function () {
+	var generateTableAng = function(eventTarget, side){
+                    linesFile.file1 = eventTarget.target.result.split("\n");
+					//remove dropzone, depend on side (editor will generate via ngrepeat)
+					if(side === 1){$( "#drop-zone" ).remove();}
+					else{$( "#drop-zone2" ).remove();}
+	}
+    $("#upload").on("click", function () {
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
         if (regex.test($("#fileUpload").val().toLowerCase())) {
             if (typeof (FileReader) != "undefined") {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    generateTable(e);
+                    generateTableAng(e,1);
                 }
                 reader.readAsText($("#fileUpload")[0].files[0]);
             } else {
@@ -56,13 +62,13 @@
             alert("Please upload a valid CSV file.");
         }
     });
-    $("#upload2").bind("click", function () {
+    $("#upload2").on("click", function () {
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
         if (regex.test($("#fileUpload2").val().toLowerCase())) {
             if (typeof (FileReader) != "undefined") {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    generateTable(e);
+                    generateTableAng(e,2);
                 }
                 reader.readAsText($("#fileUpload2")[0].files[0]);
             } else {
