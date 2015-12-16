@@ -149,7 +149,7 @@
         $scope.trustedHtml = "";
         $scope.trustedHtml2 = "";
           $scope.select = function(e) {
-              $('tr').removeClass()
+              $('td').removeClass()
               $(e.target).addClass("selected-line");
             $scope.stuff = $(e.target).html().replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
             $scope.stuff = $scope.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
