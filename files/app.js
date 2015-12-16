@@ -1,24 +1,12 @@
 (function() {
     //start of function
   var app = angular.module('formatter', []);
-  app.controller('lineDisplay',['$scope', '$compile', '$sce', function($scope, $compile, $sce) {
+  app.controller('lineDisplay',['$scope', '$sce', function($scope, $sce) {
 	$scope.file1 = [];
 	$scope.file2 = [];
 	  
     ////////////////  file upload
-    var generateTable = function(eventTarget){
-		            var table = $("<table></table>");
-                    var rows = eventTarget.target.result.split("\n");
-                    for (var i = 0; i < rows.length; i++) {
-                        var row = $('<tr data-ng-click="select($event)"></tr>');
-                        row.html(rows[i]);
-                        table.append(row);
-                    }
-                    $("#editor").html('');
-                    $compile(table)($scope)  // links ^ dynamic html to controller.
-                    $("#editor").append(table);
-	}
-	var generateTable_drop = function(eventTarget){
+	var generateTable_drop = function(eventTarget, side){
         // let's just work with one file
         var file = eventTarget.dataTransfer.files[0];
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
@@ -28,7 +16,7 @@
                     var reader = new FileReader();
 
                     reader.onload = function(e) {
-                            generateTable(e);
+                            generateTableAng(e, side);
                     }
 
                     reader.readAsText(file);
@@ -111,7 +99,7 @@
         if ($("#drop-zone").hasClass("onTop")) {
             $("#drop-zone").removeClass("onTop")
         }
-		generateTable_drop(e)
+		generateTable_drop(e, 1)
     }, false);
 	  
 	  
@@ -139,7 +127,7 @@
         if ($("#drop-zone2").hasClass("onTop")) {
             $("#drop-zone2").removeClass("onTop")
         }
-        generateTable_drop(e)
+        generateTable_drop(e, 2)
     }, false);
 
       ////////////////  selected line preparation for dialog box
