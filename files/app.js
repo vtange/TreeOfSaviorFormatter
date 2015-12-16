@@ -14,11 +14,9 @@
         //console.log(regex.test(file.name.toLowerCase()));
         if (regex.test(file.name.toLowerCase())) {
                     var reader = new FileReader();
-
                     reader.onload = function(e) {
                             generateTableAng(e, side);
                     }
-
                     reader.readAsText(file);
         } else {
         alert("Please upload a valid CSV file.");

@@ -4,6 +4,13 @@
 *{
     box-sizing: border-box;/*reset page*/
 }
+html, #wrapper {
+    overflow-x: hidden;
+}
+#wrapper {
+	width:inherit;
+  	height:inherit;
+}
 body {
   margin: 0;/*reset page*/
   background-color: #9bd;
@@ -44,7 +51,7 @@ input[type='button'] {
     border-radius: 10px;
     /*color: transparent;*/
 
-    width:450px;
+    width:67%;
     margin: 0px auto;
 }
 /*---- text sizes by width ----*/
@@ -72,13 +79,7 @@ input[type='button'] {
 }
 
 /*------ positions -------*/
-html, #wrapper {
-    overflow-x: hidden;
-}
-#wrapper {
-	width:inherit;
-  	height:inherit;
-}
+
 table{
     margin:4% 0.5% 20% 1.5%;
     line-height: 2em;
