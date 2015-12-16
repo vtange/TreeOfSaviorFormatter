@@ -55,14 +55,14 @@
 					if(side === 1){
 						$( "#drop-zone" ).remove();
 						$scope.file1 = eventTarget.target.result.split("\n");
-						$scope.$apply()
 						generateCombined();
+						$scope.$apply()
 					}
 					else{
 						$( "#drop-zone2" ).remove();
 						$scope.file2 = eventTarget.target.result.split("\n");
-						$scope.$apply()
 						generateCombined();
+						$scope.$apply()
 					};
 	}
     $("#upload").on("click", function () {

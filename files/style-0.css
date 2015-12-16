@@ -84,7 +84,8 @@ table{
     margin:4% 0.5% 20% 1.5%;
     line-height: 2em;
 }
-table tr{
+table td{
+	width:50%; 
     border:1px solid #555;
 }
 
