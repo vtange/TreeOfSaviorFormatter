@@ -22,12 +22,15 @@
 				<div id="drop-zone2" class="drop-zone"><h1>File2</h1><h2>Drag &amp; Drop or <input type="file" id="fileUpload2"><input type="button" id="upload2" value="Upload" /></h2><!--shows only when no file--></div>
 			</div>
 			<div id="editors">
+				<table data-ng-if="useCombined()">
+						<tr data-ng-repeat="line in lines" data-ng-click="select($event)"><td>{{line.one}}</td><td>{{line.two}}</td></tr>
+				</table>
 				<div id="editor" class="editor">
-					<table>
+					<table data-ng-if="!useCombined()">
 						<tr data-ng-repeat="line in file1" data-ng-click="select($event)"><td>{{line}}</td></tr>
 					</table>
         		</div><div id="editor2" class="editor">
-					<table>
+					<table data-ng-if="!useCombined()">
 						<tr data-ng-repeat="line in file2" data-ng-click="select($event)"><td>{{line}}</td></tr>
 					</table>
         		</div>

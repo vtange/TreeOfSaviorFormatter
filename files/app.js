@@ -5,6 +5,9 @@
 	$scope.file1 = [];
 	$scope.file2 = [];
 	$scope.lines = [];
+	$scope.useCombined = function(){
+		return $scope.file1.length > 0 && $scope.file2.length > 0;
+	};
     ////////////////  file upload
 	var generateTable_drop = function(eventTarget, side){
         // let's just work with one file
@@ -42,8 +45,8 @@
 		$scope.file1.length > $scope.file2.length ? $scope.lines = Array($scope.file1.length) : $scope.lines = Array($scope.file2.length)
 		for(var i = 0; i < $scope.lines.length; i++){
 			$scope.lines[i] = {
-				[0]:$scope.file1[i],
-				[1]:$scope.file2[i]
+				one:$scope.file1[i],
+				two:$scope.file2[i]
 			};
 		}
 	}
