@@ -8,10 +8,14 @@
 
       ////////////////  selected line preparation for dialog box
         $scope.selectedLine = "";
-        $scope.select = function(e) {
-              $('textarea').removeClass();
-              $(e.target).addClass("selected-line");
-			 $scope.selectedLine = $(e.target).val();
+	  	var old = {target:undefined};
+	  	$scope.select = function(e, line) {
+			if (old.target){
+			old.target.removeClass();
+			}
+			old.target = $(e.target);
+			$(e.target).addClass("selected-line");
+			$scope.selectedLine = line;
         };
 	  	var linePreRender = function(line){
             line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
