@@ -54,6 +54,12 @@ input[type='button'] {
     width:67%;
     margin: 0px auto;
 }
+textarea {
+    background-color: transparent;
+    border:0px;
+	height:100%;
+    width:100%;
+}
 /*---- text sizes by width ----*/
 
 .quest{
@@ -81,6 +87,7 @@ input[type='button'] {
 /*------ positions -------*/
 
 table{
+	width: 100%;
     margin:4% 0.5% 20% 1.5%;
     line-height: 2em;
 }

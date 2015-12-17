@@ -27,7 +27,7 @@
 				</table>
 				<div id="editor" class="editor">
 					<table data-ng-if="!useCombined()">
-						<tr data-ng-repeat="line in file1" data-ng-click="select($event)"><td>{{line}}</td></tr>
+						<tr data-ng-repeat="line in file1" data-ng-click="select($event)"><td><textarea data-ng-model="file1[file1.indexOf(line)]"></textarea></td></tr>
 					</table>
         		</div><div id="editor2" class="editor">
 					<table data-ng-if="!useCombined()">

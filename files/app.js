@@ -139,7 +139,8 @@
         }
         generateTable_drop(e, 2)
     }, false);
-
+	  
+	  
       ////////////////  selected line preparation for dialog box
         $scope.stuff = "";
         $scope.dialogvers = "";
@@ -147,9 +148,10 @@
         $scope.trustedHtml = "";
         $scope.trustedHtml2 = "";
           $scope.select = function(e) {
-              $('td').removeClass()
+              $('textarea').removeClass()
               $(e.target).addClass("selected-line");
-            $scope.stuff = $(e.target).html().replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
+			  //console.log($(e.target).val())
+            $scope.stuff = $(e.target).val().replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
             $scope.stuff = $scope.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
             $scope.dialogvers = $scope.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
             $scope.dialogvers = $scope.dialogvers.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
