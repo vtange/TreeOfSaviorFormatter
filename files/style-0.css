@@ -56,9 +56,12 @@ input[type='button'] {
 }
 textarea {
     background-color: transparent;
-    border:0px;
+    border:none;
 	height:100%;
     width:100%;
+    -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
+       -moz-box-sizing: border-box; /* FF1+ */
+            box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
 }
 /*---- text sizes by width ----*/
 

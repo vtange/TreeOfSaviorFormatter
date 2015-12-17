@@ -8,17 +8,13 @@
 
       ////////////////  selected line preparation for dialog box
         $scope.selectedLine = {text:""};
-	  	var old = {target:undefined};
-	  	$scope.select = function(e, line) {
-			if (old.target){
-			old.target.removeClass();
-			}
-			old.target = $(e.target);
-			$(e.target).addClass("selected-line");
+	  	$scope.selectedCell;
+	  	$scope.select = function(line) {
+			$scope.selectedCell = this;
 			$scope.selectedLine.text = line;
         };
-	  	$scope.isSelected = function(line){
-			return $scope.selectedLine.text == line
+	  	$scope.isSelected = function(){
+			return this == $scope.selectedCell;
 		}
 	  	var linePreRender = function(line){
             line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
