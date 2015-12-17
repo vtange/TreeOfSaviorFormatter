@@ -7,7 +7,7 @@
 	$scope.lines = [];
 
       ////////////////  selected line preparation for dialog box
-        $scope.selectedLine = "";
+        $scope.selectedLine = {text:""};
 	  	var old = {target:undefined};
 	  	$scope.select = function(e, line) {
 			if (old.target){
@@ -15,10 +15,10 @@
 			}
 			old.target = $(e.target);
 			$(e.target).addClass("selected-line");
-			$scope.selectedLine = line;
+			$scope.selectedLine.text = line;
         };
 	  	$scope.isSelected = function(line){
-			return $scope.selectedLine == line
+			return $scope.selectedLine.text == line
 		}
 	  	var linePreRender = function(line){
             line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
