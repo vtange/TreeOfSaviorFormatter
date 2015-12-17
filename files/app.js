@@ -8,19 +8,24 @@
 
       ////////////////  selected line preparation for dialog box
         $scope.selectedLine = {text:""};//becomes rendered line
-	  	$scope.selectedCell;
-	  	$scope.select = function(line) {
+        $scope.selectedArr = [];//saving
+        $scope.selectedIndex = -1;//saving
+	  	$scope.selectedCell;//green highlight
+	  	$scope.select = function(arr, index) {//save current work, green highlight, selectArr & Index, Updateselect Line
 			//save previous?
 			if(!(this == $scope.selectedCell)){
-				console.log("new select")
+				//console.log("new select")
+				$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
 				$scope.selectedCell = this;
-				$scope.selectedLine.text = line;
+				$scope.selectedLine.text = arr[index];
+				$scope.selectedArr = arr;
+				$scope.selectedIndex = index;
 			};
         };
-	  	$scope.isSelected = function(){
+	  	$scope.isSelected = function(){//green highlight
 			return this == $scope.selectedCell;
 		}
-		$scope.saveLine = function(arr, index){
+		$scope.saveLine = function(arr, index){//save current work
 			//cannot just use line with file1[$index] at html
 			arr[index] = $scope.selectedLine.text;
 		}
