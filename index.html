@@ -27,7 +27,7 @@
 				</table>
 				<div id="editor" class="editor">
 					<table data-ng-if="!useCombined()">
-						<tr data-ng-repeat="line in file1" data-ng-click="select(file1[$index])" data-ng-class="{'selected-line':isSelected()}"><td><span data-ng-if="!isSelected()">{{line}}</span><textarea data-ng-if="isSelected()" data-ng-model="selectedLine.text"></textarea></td></tr>
+						<tr data-ng-repeat="line in file1" data-ng-click="select(file1[$index])" data-ng-class="{'selected-line':isSelected()}"><td><span data-ng-if="!isSelected()">{{line}}</span><textarea data-ng-enter="saveLine(file1,$index)" data-ng-if="isSelected()" data-ng-model="selectedLine.text"></textarea></td></tr>
 					</table>
         		</div><div id="editor2" class="editor">
 					<table data-ng-if="!useCombined()">

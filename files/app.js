@@ -7,14 +7,20 @@
 	$scope.lines = [];
 
       ////////////////  selected line preparation for dialog box
-        $scope.selectedLine = {text:""};
+        $scope.selectedLine = {text:""};//becomes rendered line
 	  	$scope.selectedCell;
 	  	$scope.select = function(line) {
+			//save previous?
+			
 			$scope.selectedCell = this;
 			$scope.selectedLine.text = line;
         };
 	  	$scope.isSelected = function(){
 			return this == $scope.selectedCell;
+		}
+		$scope.saveLine = function(arr, index){
+			//cannot just use line with file1[$index] at html
+			arr[index] = $scope.selectedLine.text;
 		}
 	  	var linePreRender = function(line){
             line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
@@ -198,5 +204,17 @@
           return this.rbar === 1;
       };
     }]) //end of controller
+  app.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                event.preventDefault();
+				scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+            }
+        });
+    };
+});//end of directive
   //end of function
 })();
