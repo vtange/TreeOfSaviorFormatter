@@ -11,9 +11,11 @@
 	  	$scope.selectedCell;
 	  	$scope.select = function(line) {
 			//save previous?
-			
-			$scope.selectedCell = this;
-			$scope.selectedLine.text = line;
+			if(!(this == $scope.selectedCell)){
+				console.log("new select")
+				$scope.selectedCell = this;
+				$scope.selectedLine.text = line;
+			};
         };
 	  	$scope.isSelected = function(){
 			return this == $scope.selectedCell;
