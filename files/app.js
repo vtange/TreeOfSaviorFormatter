@@ -17,6 +17,9 @@
 			$(e.target).addClass("selected-line");
 			$scope.selectedLine = line;
         };
+	  	$scope.isSelected = function(line){
+			return $scope.selectedLine == line
+		}
 	  	var linePreRender = function(line){
             line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
             line = line.replace(/{nl}/g, '<br>')//replace {nl}s with brs
