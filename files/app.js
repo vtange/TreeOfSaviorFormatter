@@ -5,6 +5,32 @@
 	$scope.file1 = [];
 	$scope.file2 = [];
 	$scope.lines = [];
+
+      ////////////////  selected line preparation for dialog box
+        $scope.selectedLine = "";
+        $scope.select = function(e) {
+              $('textarea').removeClass();
+              $(e.target).addClass("selected-line");
+			 $scope.selectedLine = $(e.target).val();
+        };
+	  	var linePreRender = function(line){
+            line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
+            line = line.replace(/{nl}/g, '<br>')//replace {nl}s with brs
+			return line;
+		}
+		$scope.renderDialog = function(line){
+			line = linePreRender(line);
+            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
+            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
+            line = $sce.trustAsHtml(line); // required to ng-bind to index.html -> security check for txt-block
+			return line;
+		};
+	  	$scope.renderQuestDesc = function(line){
+            line = linePreRender(line);
+            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')//break every 45
+            line = $sce.trustAsHtml(line); // required to ng-bind to index.html -> security check for right-bar quest desc
+			return line;
+		};
 	$scope.useCombined = function(){
 		return $scope.file1.length > 0 && $scope.file2.length > 0;
 	};
@@ -139,26 +165,7 @@
         }
         generateTable_drop(e, 2)
     }, false);
-	  
-	  
-      ////////////////  selected line preparation for dialog box
-        $scope.stuff = "";
-        $scope.dialogvers = "";
-        $scope.questvers = "";
-        $scope.trustedHtml = "";
-        $scope.trustedHtml2 = "";
-          $scope.select = function(e) {
-              $('textarea').removeClass()
-              $(e.target).addClass("selected-line");
-			  //console.log($(e.target).val())
-            $scope.stuff = $(e.target).val().replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
-            $scope.stuff = $scope.stuff.replace(/{nl}/g, '<br>')//replace {nl}s with brs
-            $scope.dialogvers = $scope.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
-            $scope.dialogvers = $scope.dialogvers.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
-            $scope.questvers = $scope.stuff.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')//break every 45
-            $scope.trustedHtml = $sce.trustAsHtml($scope.dialogvers); // required to ng-bind to index.html -> security check for txt-block
-            $scope.trustedHtml2 = $sce.trustAsHtml($scope.questvers); // required to ng-bind to index.html -> security check for right-bar quest desc
-        };
+
     }]) //end of controller
   app.controller('aideCtrl',[ function() {
 //toggle text block

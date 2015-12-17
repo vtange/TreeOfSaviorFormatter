@@ -27,7 +27,7 @@
 				</table>
 				<div id="editor" class="editor">
 					<table data-ng-if="!useCombined()">
-						<tr data-ng-repeat="line in file1" data-ng-click="select($event)"><td><textarea data-ng-model="file1[file1.indexOf(line)]"></textarea></td></tr>
+						<tr data-ng-repeat="line in file1" data-ng-click="select($event)"><td><textarea data-ng-model="file1[$index]"></textarea></td></tr>
 					</table>
         		</div><div id="editor2" class="editor">
 					<table data-ng-if="!useCombined()">
@@ -45,11 +45,11 @@
 					<span class="title" id="no-time">I have no time...</span>
 					<span class="small" id="quest-area">Area : Nefritas Cliff</span>
 					<span class="small" id="quest-what">Tree Guard Post<br>Enhancement against the<br> demon's soul</span>
-					<span class="small" id="quest-desc" data-ng-bind-html="trustedHtml2">Help Allen get rid of the demons around the Wooden Guard Post and charge its soul on the barrier.</span>
+					<span class="small" id="quest-desc" data-ng-bind-html="renderQuestDesc(selectedLine)">Help Allen get rid of the demons around the Wooden Guard Post and charge its soul on the barrier.</span>
 					</div>
 				</div>
 				<div class="text-block" data-ng-class="{opac: aideCtrl.toggledOn()}">
-					<div class="dialog" data-ng-bind-html="trustedHtml">
+					<div class="dialog" data-ng-bind-html="renderDialog(selectedLine)">
 						<!--The eleders gave me many charms that will help me defeating the demons. <br>     I hope they help me.---initial debug text, type on purpose-->
 					</div>
 				</div>
