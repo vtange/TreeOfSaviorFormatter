@@ -32,6 +32,7 @@
 	  	var linePreRender = function(line){
             line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
             line = line.replace(/{nl}/g, '<br>')//replace {nl}s with brs
+			autosize(document.querySelectorAll('textarea')); //resize textarea as text is rendered(as i type)
 			return line;
 		}
 		$scope.renderDialog = function(line){
@@ -114,10 +115,6 @@
         uploadedFileCheck("#fileUpload2",2);
     });
 
-	autosize(document.querySelectorAll('textarea')); 
-	  
-	  
-	  
     ////////////////  drag and drop
 	// prevent missed drops == load file
     var page = document.querySelector("html");
