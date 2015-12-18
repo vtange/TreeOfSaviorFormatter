@@ -11,23 +11,40 @@
         $scope.selectedArr = [];//saving
         $scope.selectedIndex = -1;//saving
 	  	$scope.selectedCell;//green highlight
-	  	$scope.select = function(arr, index) {//save current work, green highlight, selectArr & Index, Updateselect Line
-			//save previous?
-			if(!(this == $scope.selectedCell)){
-				//console.log("new select")
-				$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
+	  	$scope.select = function(arr, index, prop) {//save current work, green highlight, selectArr & Index, Updateselect Line
+			console.log(arr)
+			if(!(this == $scope.selectedCell)){//prevent reselecting same cell
+				if(arr[index].constructor == Object){
+					if($scope.selectedArr[$scope.selectedIndex]!==undefined){//check if there is a selected
+						$scope.saveLine($scope.selectedArr,$scope.selectedIndex, prop);
+					}
+					$scope.selectedCell = this;
+					$scope.selectedLine.text = arr[index][prop];
+					$scope.selectedArr = arr;
+					$scope.selectedIndex = index;
+				}
+				else{
+				if($scope.selectedArr[$scope.selectedIndex]!==undefined){//check if there is a selected
+					$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
+				}
 				$scope.selectedCell = this;
 				$scope.selectedLine.text = arr[index];
 				$scope.selectedArr = arr;
 				$scope.selectedIndex = index;
+				}
 			};
         };
 	  	$scope.isSelected = function(){//green highlight
 			return this == $scope.selectedCell;
 		}
-		$scope.saveLine = function(arr, index){//save current work
+		$scope.saveLine = function(arr, index, prop){//save current work
 			//cannot just use line with file1[$index] at html
-			arr[index] = $scope.selectedLine.text;
+			if (arr[index].constructor == Object){
+				arr[index][prop] = $scope.selectedLine.text;
+			}
+			else{
+				arr[index] = $scope.selectedLine.text;
+			}
 		}
 	  	var linePreRender = function(line){
             line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
