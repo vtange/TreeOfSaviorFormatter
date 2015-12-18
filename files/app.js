@@ -10,9 +10,9 @@
         $scope.selectedLine = {text:""};//becomes rendered line
         $scope.selectedArr = [];//saving
         $scope.selectedIndex = -1;//saving
+        $scope.selectedProp = "three";//differentiate column in double-mode
 	  	$scope.selectedCell;//green highlight
 	  	$scope.select = function(arr, index, prop) {//save current work, green highlight, selectArr & Index, Updateselect Line
-			console.log(arr)
 			if(!(this == $scope.selectedCell)){//prevent reselecting same cell
 				if(arr[index].constructor == Object){
 					if($scope.selectedArr[$scope.selectedIndex]!==undefined){//check if there is a selected
@@ -22,6 +22,7 @@
 					$scope.selectedLine.text = arr[index][prop];
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
+					$scope.selectedProp = prop;
 				}
 				else{
 				if($scope.selectedArr[$scope.selectedIndex]!==undefined){//check if there is a selected
@@ -34,16 +35,23 @@
 				}
 			};
         };
-	  	$scope.isSelected = function(){//green highlight
-			return this == $scope.selectedCell;
+	  	$scope.isSelected = function(prop){//green highlight
+			if(prop){
+				return this == $scope.selectedCell && $scope.selectedProp == prop;
+			}
+			else{
+				return this == $scope.selectedCell;
+			}
 		}
 		$scope.saveLine = function(arr, index, prop){//save current work
 			//cannot just use line with file1[$index] at html
 			if (arr[index].constructor == Object){
 				arr[index][prop] = $scope.selectedLine.text;
+				$scope.selectedCell = {};//deselect
 			}
 			else{
 				arr[index] = $scope.selectedLine.text;
+				$scope.selectedCell = {};//deselect
 			}
 		}
 	  	var linePreRender = function(line){
