@@ -24,15 +24,15 @@
 			</div>
 			<div id="editors">
 				<table data-ng-if="useCombined()">
-						<tr data-ng-repeat="line in lines"><td data-ng-click="select(lines,$index,'one')" data-ng-class="{'selected-line':isSelected('one')}"><span data-ng-if="!isSelected('one')">{{::line.one}}</span><textarea data-ng-enter="saveLine(lines,$index,'one')" data-ng-if="isSelected('one')" data-ng-model="selectedLine.text"></textarea></td><td data-ng-click="select(lines,$index,'two')" data-ng-class="{'selected-line':isSelected('two')}"><span data-ng-if="!isSelected('two')">{{::line.two}}</span><textarea data-ng-enter="saveLine(lines,$index,'two')" data-ng-if="isSelected('two')" data-ng-model="selectedLine.text"></textarea></td></tr>
+						<tr data-ng-repeat="line in lines track by $index"><td data-ng-click="select(lines,$index,'one')" data-ng-class="{'selected-line':isSelected('one')}"><span data-ng-if="!isSelected('one')">{{::line.one}}</span><textarea data-ng-enter="saveLine(lines,$index,'one')" data-ng-if="isSelected('one')" data-ng-model="selectedLine.text"></textarea></td><td data-ng-click="select(lines,$index,'two')" data-ng-class="{'selected-line':isSelected('two')}"><span data-ng-if="!isSelected('two')">{{::line.two}}</span><textarea data-ng-enter="saveLine(lines,$index,'two')" data-ng-if="isSelected('two')" data-ng-model="selectedLine.text"></textarea></td></tr>
 				</table>
 				<div id="editor" class="editor">
 					<table data-ng-if="!useCombined()">
-						<tr data-ng-repeat="line in file1" data-ng-click="select(file1,$index)" data-ng-class="{'selected-line':isSelected()}"><td><span data-ng-if="!isSelected()">{{::line}}</span><textarea data-ng-enter="saveLine(file1,$index)" data-ng-if="isSelected()" data-ng-model="selectedLine.text"></textarea></td></tr>
+						<tr data-ng-repeat="line in file1 track by $index" data-ng-click="select(file1,$index)" data-ng-class="{'selected-line':isSelected()}"><td><span data-ng-if="!isSelected()">{{::line}}</span><textarea data-ng-enter="saveLine(file1,$index)" data-ng-if="isSelected()" data-ng-model="selectedLine.text"></textarea></td></tr>
 					</table>
         		</div><div id="editor2" class="editor">
 					<table data-ng-if="!useCombined()">
-						<tr data-ng-repeat="line in file2" data-ng-click="select(file2,$index)" data-ng-class="{'selected-line':isSelected()}"><td><span data-ng-if="!isSelected()">{{::line}}</span><textarea data-ng-enter="saveLine(file2,$index)" data-ng-if="isSelected()" data-ng-model="selectedLine.text"></textarea></td></tr>
+						<tr data-ng-repeat="line in file2 track by $index" data-ng-click="select(file2,$index)" data-ng-class="{'selected-line':isSelected()}"><td><span data-ng-if="!isSelected()">{{::line}}</span><textarea data-ng-enter="saveLine(file2,$index)" data-ng-if="isSelected()" data-ng-model="selectedLine.text"></textarea></td></tr>
 					</table>
         		</div>
         	</div>
