@@ -130,7 +130,7 @@
                 var ngRepeatChild = $element.children().eq(0),
                     ngRepeatExpression = ngRepeatChild.attr('ng-repeat') || ngRepeatChild.attr('data-ng-repeat'),
                     childCloneHtml = ngRepeatChild[0].outerHTML,
-                    expressionMatches = /^\s*(\S+)\s+in\s+([\S\s]+?)(track\s+by\s+\S+)?$/.exec(ngRepeatExpression),
+                    expressionMatches = /\"(\S+)\s+in\s+(\S+)\s*(track\s+by\s+\S+)?/.exec(childCloneHtml),
                     lhs = expressionMatches[1],
                     rhs = expressionMatches[2],
                     rhsSuffix = expressionMatches[3],
@@ -141,7 +141,10 @@
                         'vsOffsetAfter': 'offsetAfter',
                         'vsExcess': 'excess'
                     };
-
+				console.log(ngRepeatChild);
+				console.log(ngRepeatExpression);
+				console.log(childCloneHtml);
+				console.log(expressionMatches);
                 $element.empty();
                 return {
                     pre: function($scope, $element, $attrs) {
