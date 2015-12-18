@@ -114,6 +114,10 @@
         uploadedFileCheck("#fileUpload2",2);
     });
 
+	autosize(document.querySelectorAll('textarea')); 
+	  
+	  
+	  
     ////////////////  drag and drop
 	// prevent missed drops == load file
     var page = document.querySelector("html");
