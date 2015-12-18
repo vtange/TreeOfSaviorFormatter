@@ -57,7 +57,9 @@ input[type='button'] {
 textarea {
     background-color: transparent;
     border:none;
-	height:100%;
+	resize: none;
+	overflow: hidden;
+
     width:100%;
     -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
        -moz-box-sizing: border-box; /* FF1+ */
