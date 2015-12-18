@@ -12,6 +12,7 @@
         <script type="text/javascript" src="files/stretchy.js"></script>
         <script type="text/javascript" src="files/flowtype.js"></script>
         <script type="text/javascript" src="files/autosize.min.js"></script>
+        <script type="text/javascript" src="files/angular-vs-repeat.js"></script>
 </head>
 <body data-ng-controller="lineDisplay as lines">
         <div id="header">
@@ -22,12 +23,12 @@
 				<div id="drop-zone" class="drop-zone"><h1>File1</h1><h2>Drag &amp; Drop or <input type="file" id="fileUpload"><input type="button" id="upload" value="Upload" /></h2><!--shows only when no file--></div>
 				<div id="drop-zone2" class="drop-zone"><h1>File2</h1><h2>Drag &amp; Drop or <input type="file" id="fileUpload2"><input type="button" id="upload2" value="Upload" /></h2><!--shows only when no file--></div>
 			</div>
-			<div id="editors">
+			<div id="editors" data-ng-if="editMode">
 				<table data-ng-if="useCombined()">
 						<tr data-ng-repeat="line in lines track by $index"><td data-ng-click="select(lines,$index,'one')" data-ng-class="{'selected-line':isSelected('one')}"><span data-ng-if="!isSelected('one')">{{::line.one}}</span><textarea data-ng-enter="saveLine(lines,$index,'one')" data-ng-if="isSelected('one')" data-ng-model="selectedLine.text"></textarea></td><td data-ng-click="select(lines,$index,'two')" data-ng-class="{'selected-line':isSelected('two')}"><span data-ng-if="!isSelected('two')">{{::line.two}}</span><textarea data-ng-enter="saveLine(lines,$index,'two')" data-ng-if="isSelected('two')" data-ng-model="selectedLine.text"></textarea></td></tr>
 				</table>
 				<div id="editor" class="editor">
-					<table data-ng-if="!useCombined()">
+					<table data-ng-if="!useCombined()" vs-repeat>
 						<tr data-ng-repeat="line in file1 track by $index" data-ng-click="select(file1,$index)" data-ng-class="{'selected-line':isSelected()}"><td><span data-ng-if="!isSelected()">{{::line}}</span><textarea data-ng-enter="saveLine(file1,$index)" data-ng-if="isSelected()" data-ng-model="selectedLine.text"></textarea></td></tr>
 					</table>
         		</div><div id="editor2" class="editor">

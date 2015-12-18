@@ -1,11 +1,11 @@
 (function() {
     //start of function
-  var app = angular.module('formatter', []);
+  var app = angular.module('formatter', ['vs-repeat']);
   app.controller('lineDisplay',['$scope', '$sce', function($scope, $sce) {
 	$scope.file1 = [];
 	$scope.file2 = [];
 	$scope.lines = [];
-
+	$scope.editMode = false;
       ////////////////  selected line preparation for dialog box
         $scope.selectedLine = {text:""};		//becomes rendered line
         $scope.selectedArr = [];				//saving
@@ -135,12 +135,14 @@
 						$scope.file1 = eventTarget.target.result.split("\n");
 						generateCombined();
 						$scope.$apply()
+						$scope.editMode = true;
 					}
 					else{
 						$( "#drop-zone2" ).remove();
 						$scope.file2 = eventTarget.target.result.split("\n");
 						generateCombined();
 						$scope.$apply()
+						$scope.editMode = true;
 					};
 	}
     $("#upload").on("click", function () {
