@@ -13,10 +13,20 @@
         $scope.selectedProp = "three";//differentiate column in double-mode
 	  	$scope.selectedCell;//green highlight
 	  	$scope.select = function(arr, index, prop) {//save current work, green highlight, selectArr & Index, Updateselect Line
-			if(!(this == $scope.selectedCell)){//prevent reselecting same cell
+			if(!(this == $scope.selectedCell && prop == $scope.selectedProp)){//prevent reselecting same cell, allow different prop
 				if(arr[index].constructor == Object){
 					if($scope.selectedArr[$scope.selectedIndex]!==undefined){//check if there is a selected
-						$scope.saveLine($scope.selectedArr,$scope.selectedIndex, prop);
+						if(prop == $scope.selectedProp){// if remain on same column
+							$scope.saveLine($scope.selectedArr,$scope.selectedIndex, prop);
+						}
+						else{// if switch column
+							if(prop == "one"){
+								$scope.saveLine($scope.selectedArr,$scope.selectedIndex, "two");
+							}
+							else{
+								$scope.saveLine($scope.selectedArr,$scope.selectedIndex, "one");
+							}
+						}
 					}
 					$scope.selectedCell = this;
 					$scope.selectedLine.text = arr[index][prop];
