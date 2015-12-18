@@ -7,19 +7,19 @@
 	$scope.lines = [];
 
       ////////////////  selected line preparation for dialog box
-        $scope.selectedLine = {text:""};//becomes rendered line
-        $scope.selectedArr = [];//saving
-        $scope.selectedIndex = -1;//saving
-        $scope.selectedProp = "three";//differentiate column in double-mode
-	  	$scope.selectedCell;//green highlight
-	  	$scope.select = function(arr, index, prop) {//save current work, green highlight, selectArr & Index, Updateselect Line
-			if(!(this == $scope.selectedCell && prop == $scope.selectedProp)){//prevent reselecting same cell, allow different prop
-				if(arr[index].constructor == Object){
-					if($scope.selectedArr[$scope.selectedIndex]!==undefined){//check if there is a selected
-						if(prop == $scope.selectedProp){// if remain on same column
+        $scope.selectedLine = {text:""};		//becomes rendered line
+        $scope.selectedArr = [];				//saving
+        $scope.selectedIndex = -1;				//saving
+        $scope.selectedProp = "three";			//differentiate column in double-mode
+	  	$scope.selectedCell;					//green highlight
+	  	$scope.select = function(arr, index, prop) {							//save current work, green highlight, selectArr & Index, Updateselect Line
+			if(!(this == $scope.selectedCell && prop == $scope.selectedProp)){	//prevent reselecting same cell, allow different column
+				if(arr[index].constructor == Object){							//double column mode
+					if($scope.selectedArr[$scope.selectedIndex]!==undefined){	//enter saving phase, check if there is a valid selected cell to save into
+						if(prop == $scope.selectedProp){						// if remain on same column
 							$scope.saveLine($scope.selectedArr,$scope.selectedIndex, prop);
 						}
-						else{// if switch column
+						else{													// if switch column
 							if(prop == "one"){
 								$scope.saveLine($scope.selectedArr,$scope.selectedIndex, "two");
 							}
@@ -28,33 +28,33 @@
 							}
 						}
 					}
-					$scope.selectedCell = this;
+					$scope.selectedCell = this;									//assign values as selected
 					$scope.selectedLine.text = arr[index][prop];
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
 					$scope.selectedProp = prop;
 				}
-				else{
-				if($scope.selectedArr[$scope.selectedIndex]!==undefined){//check if there is a selected
+				else{															//single column mode
+				if($scope.selectedArr[$scope.selectedIndex]!==undefined){		//enter saving phase, check if there is a valid selected cell to save into
 					$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
 				}
-				$scope.selectedCell = this;
+				$scope.selectedCell = this;										//assign values as selected
 				$scope.selectedLine.text = arr[index];
 				$scope.selectedArr = arr;
 				$scope.selectedIndex = index;
 				}
 			};
         };
-	  	$scope.isSelected = function(prop){//green highlight
-			if(prop){
+	  	$scope.isSelected = function(prop){										//green highlight
+			if(prop){															//double column mode, prevents double green
 				return this == $scope.selectedCell && $scope.selectedProp == prop;
 			}
 			else{
 				return this == $scope.selectedCell;
 			}
 		}
-		$scope.saveLine = function(arr, index, prop){//save current work
-			//cannot just use line with file1[$index] at html
+		$scope.saveLine = function(arr, index, prop){							//save current work
+																				//cannot just use line as argument[0] with file1[$index] at html, doesn't link to array
 			if (arr[index].constructor == Object){
 				arr[index][prop] = $scope.selectedLine.text;
 				$scope.selectedCell = {};//deselect
@@ -65,22 +65,22 @@
 			}
 		}
 	  	var linePreRender = function(line){
-            line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1'); // get text, get rid of memo x
-            line = line.replace(/{nl}/g, '<br>')//replace {nl}s with brs
-			autosize(document.querySelectorAll('textarea')); //resize textarea as text is rendered(as i type)
+            line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1');	// get text, get rid of memo x
+            line = line.replace(/{nl}/g, '<br>')								//replace {nl}s with brs
+			autosize(document.querySelectorAll('textarea'));					//resize textarea as text is rendered(as i type)
 			return line;
 		}
 		$scope.renderDialog = function(line){
 			line = linePreRender(line);
-            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')//break every 120
-            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')//now break again every 90
-            line = $sce.trustAsHtml(line); // required to ng-bind to index.html -> security check for txt-block
+            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')		//break every 120
+            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{90})/g, '$1<br>')		//now break again every 90
+            line = $sce.trustAsHtml(line);										// required to ng-bind to index.html -> security check for txt-block
 			return line;
 		};
 	  	$scope.renderQuestDesc = function(line){
             line = linePreRender(line);
-            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')//break every 45
-            line = $sce.trustAsHtml(line); // required to ng-bind to index.html -> security check for right-bar quest desc
+            line = line.replace(/([\w\s\d-+;|,.!&'"\?]{45})/g, '$1<br>')		//break every 45
+            line = $sce.trustAsHtml(line);										// required to ng-bind to index.html -> security check for right-bar quest desc
 			return line;
 		};
 	$scope.useCombined = function(){
