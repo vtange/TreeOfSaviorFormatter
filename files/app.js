@@ -1,6 +1,6 @@
 (function() {
     //start of function
-  var app = angular.module('formatter', ['vs-repeat']);
+  var app = angular.module('formatter', []);
   app.controller('lineDisplay',['$scope', '$sce', function($scope, $sce) {
 	$scope.file1 = [];
 	$scope.file2 = [];
@@ -134,15 +134,15 @@
 						$( "#drop-zone" ).remove();
 						$scope.file1 = eventTarget.target.result.split("\n");
 						generateCombined();
-						$scope.$apply()
 						$scope.editMode = true;
+						$scope.$apply()
 					}
 					else{
 						$( "#drop-zone2" ).remove();
 						$scope.file2 = eventTarget.target.result.split("\n");
 						generateCombined();
-						$scope.$apply()
 						$scope.editMode = true;
+						$scope.$apply()
 					};
 	}
     $("#upload").on("click", function () {
