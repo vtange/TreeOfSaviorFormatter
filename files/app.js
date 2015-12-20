@@ -86,6 +86,16 @@
 	$scope.useCombined = function(){
 		return $scope.file1.length > 0 && $scope.file2.length > 0;
 	};
+	$scope.glowLine = function(prop){
+		if(prop){
+			if(this.isSelected(prop)){
+				return {    "background": "#008822"   }
+			}
+		}
+		else if (this.isSelected()){
+			return {    "background": "#008822"   }
+		}
+	};
     ////////////////  file upload
 	var generateTable_drop = function(eventTarget, side){
         // let's just work with one file
