@@ -119,6 +119,26 @@
             alert("Please upload a valid CSV file.");
         }
 	}
+	var renderTable = function(){
+		if ($scope.useCombined){
+			//clear editors
+			$("#editors").html('');
+			//generate double column table
+		}
+		else{
+			//table generation (make a function out of this)
+			var table = $("<table></table>");
+			for (var i = 0; i < rows.length; i++) {
+				var row = $('<tr data-ng-click="lines.select($event)"></tr>');
+				row.html(rows[i]);
+				table.append(row);
+			}
+			$compile(table)($scope)  // links ^ dynamic html to controller.
+			//table generation (make a function out of this)
+			//editor1 or 2
+			$("#editor").append(table);
+		}
+	}
 	var generateCombined = function(){
 		$scope.file1.length > $scope.file2.length ? $scope.lines = Array($scope.file1.length) : $scope.lines = Array($scope.file2.length)
 		for(var i = 0; i < $scope.lines.length; i++){
@@ -134,13 +154,13 @@
 						$( "#drop-zone" ).remove();
 						$scope.file1 = eventTarget.target.result.split("\n");
 						generateCombined();
-						$scope.$apply()
+						renderTable();
 					}
 					else{
 						$( "#drop-zone2" ).remove();
 						$scope.file2 = eventTarget.target.result.split("\n");
 						generateCombined();
-						$scope.$apply()
+						renderTable();
 					};
 	}
     $("#upload").on("click", function () {
