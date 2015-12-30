@@ -9,7 +9,7 @@
         $scope.selectedLine = {text:""};		//becomes rendered line
         $scope.selectedArr = [];				//saving
         $scope.selectedIndex = -1;				//saving
-        $scope.selectedProp = null;			//differentiate column in double-mode
+        $scope.selectedProp = null;				//differentiate column in double-mode
 	  	$scope.selectedCell;					//green highlight
 	  	$scope.select = function(arr, index, prop, event) {		//save current work, green highlight, selectArr & Index, Updateselect Line
 			var $lastClicked = $scope.selectedCell;
@@ -27,26 +27,35 @@
 								$scope.saveLine($scope.selectedArr,$scope.selectedIndex, "one");
 							}
 						}
-					}
-					$scope.selectedCell = event.target;							//assign values as selected
+					}//end saving phase
+					//glowing phase
+						if ($scope.selectedCell){
+							console.log($lastClicked);
+							$("#"+$lastClicked).removeClass("selected-line");
+						}
+						$scope.selectedCell = event.target.id;
+						$("#"+$scope.selectedCell).addClass("selected-line");
+					//end glowing phase
 					$scope.selectedLine.text = arr[index][prop];
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
 					$scope.selectedProp = prop;
-				}//double column mode ^
+				}//double column mode ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 				else{															//single column mode
-				if($scope.selectedArr[$scope.selectedIndex]!==undefined){		//enter saving phase, check if there is a valid selected cell to save into
-					$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
-				}
-				if ($scope.selectedCell){
-					console.log($lastClicked);
-					$("#"+$lastClicked).removeClass("selected-line");
-				}
-				$scope.selectedCell = event.target.id;
-				$("#"+$scope.selectedCell).addClass("selected-line");
-				$scope.selectedLine.text = arr[index];
-				$scope.selectedArr = arr;
-				$scope.selectedIndex = index;
+					if($scope.selectedArr[$scope.selectedIndex]!==undefined){		//enter saving phase, check if there is a valid selected cell to save into
+						$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
+					}//end saving phase
+					//glowing phase
+						if ($scope.selectedCell){
+							console.log($lastClicked);
+							$("#"+$lastClicked).removeClass("selected-line");
+						}
+						$scope.selectedCell = event.target.id;
+						$("#"+$scope.selectedCell).addClass("selected-line");
+					//end glowing phase
+					$scope.selectedLine.text = arr[index];
+					$scope.selectedArr = arr;
+					$scope.selectedIndex = index;
 				}
 			};
         };
