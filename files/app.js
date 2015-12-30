@@ -11,7 +11,8 @@
         $scope.selectedIndex = -1;				//saving
         $scope.selectedProp = null;			//differentiate column in double-mode
 	  	$scope.selectedCell;					//green highlight
-	  	$scope.select = function(arr, index, prop, event) {						//save current work, green highlight, selectArr & Index, Updateselect Line
+	  	$scope.select = function(arr, index, prop, event) {		//save current work, green highlight, selectArr & Index, Updateselect Line
+			var $lastClicked = $scope.selectedCell;
 			if(!(event.target == $scope.selectedCell && prop == $scope.selectedProp)){	//prevent reselecting same cell, allow different column
 				if(arr[index].constructor == Object){							//double column mode
 					if($scope.selectedArr[$scope.selectedIndex]!==undefined){	//enter saving phase, check if there is a valid selected cell to save into
@@ -38,14 +39,11 @@
 					$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
 				}
 				if ($scope.selectedCell){
-					var $lastClicked = $scope.selectedCell;
-					var $newlyClicked = event.target;
-					console.log($scope.selectedCell);
-					console.log($newlyClicked);
-					//$scope.selectedCell.removeClass("selected-line");
-					//event.target.addClass("selected-line");
+					console.log($lastClicked);
+					$("#"+$lastClicked).removeClass("selected-line");
 				}
-				$scope.selectedCell = event.target;								//assign values as selected
+				$scope.selectedCell = event.target.id;
+				$("#"+$scope.selectedCell).addClass("selected-line");
 				$scope.selectedLine.text = arr[index];
 				$scope.selectedArr = arr;
 				$scope.selectedIndex = index;
@@ -122,7 +120,7 @@
 			var abrev = arr === $scope.file1 ? 'file1' : 'file2';
 			var table = $("<table></table>");
 			for (var i = 0; i < arr.length; i++) {
-				var row = $('<tr data-ng-click="select('+abrev+','+i+',null,$event)"></tr>');
+				var row = $('<tr data-ng-click="select('+abrev+','+i+',null,$event)" id="line'+i+'"></tr>');
 				row.html(arr[i]);
 				table.append(row);
 			}
