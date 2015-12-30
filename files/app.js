@@ -11,8 +11,8 @@
         $scope.selectedIndex = -1;				//saving
         $scope.selectedProp = null;			//differentiate column in double-mode
 	  	$scope.selectedCell;					//green highlight
-	  	$scope.select = function(arr, index, prop, event) {							//save current work, green highlight, selectArr & Index, Updateselect Line
-			if(!(this == $scope.selectedCell && prop == $scope.selectedProp)){	//prevent reselecting same cell, allow different column
+	  	$scope.select = function(arr, index, prop, event) {						//save current work, green highlight, selectArr & Index, Updateselect Line
+			if(!(event.target == $scope.selectedCell && prop == $scope.selectedProp)){	//prevent reselecting same cell, allow different column
 				if(arr[index].constructor == Object){							//double column mode
 					if($scope.selectedArr[$scope.selectedIndex]!==undefined){	//enter saving phase, check if there is a valid selected cell to save into
 						if(prop == $scope.selectedProp){						// if remain on same column
@@ -27,7 +27,7 @@
 							}
 						}
 					}
-					$scope.selectedCell = this;									//assign values as selected
+					$scope.selectedCell = event.target;							//assign values as selected
 					$scope.selectedLine.text = arr[index][prop];
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
@@ -37,33 +37,21 @@
 				if($scope.selectedArr[$scope.selectedIndex]!==undefined){		//enter saving phase, check if there is a valid selected cell to save into
 					$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
 				}
+				if ($scope.selectedCell){
+					var $lastClicked = $scope.selectedCell;
+					var $newlyClicked = event.target;
+					console.log($scope.selectedCell);
+					console.log($newlyClicked);
+					//$scope.selectedCell.removeClass("selected-line");
+					//event.target.addClass("selected-line");
+				}
 				$scope.selectedCell = event.target;								//assign values as selected
-				console.log($scope.selectedCell);
-				console.log($scope.selectedCell.isSelected());
 				$scope.selectedLine.text = arr[index];
 				$scope.selectedArr = arr;
 				$scope.selectedIndex = index;
 				}
 			};
         };
-	  	$scope.isSelected = function(prop){										//green highlight
-			if(prop){															//double column mode, prevents double green
-				return this == $scope.selectedCell && $scope.selectedProp == prop;
-			}
-			else{
-				return this == $scope.selectedCell;
-			}
-		}
-		$scope.glowLine = function(prop){
-			if(prop){
-				if(this.isSelected(prop)){
-					return {    "background": "#008822"   }
-				}
-			}
-			else if (this.isSelected()){
-				return {    "background": "#008822"   }
-			}
-		};
 		$scope.saveLine = function(arr, index, prop){							//save current work
 																				//cannot just use line as argument[0] with file1[$index] at html, doesn't link to array
 			if (arr[index].constructor == Object){
@@ -134,7 +122,7 @@
 			var abrev = arr === $scope.file1 ? 'file1' : 'file2';
 			var table = $("<table></table>");
 			for (var i = 0; i < arr.length; i++) {
-				var row = $('<tr data-ng-click="select('+abrev+','+i+',null,$event)" data-ng-style="glowLine()"></tr>');
+				var row = $('<tr data-ng-click="select('+abrev+','+i+',null,$event)"></tr>');
 				row.html(arr[i]);
 				table.append(row);
 			}

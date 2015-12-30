@@ -242,3 +242,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     opacity:1.0;
     z-index:999;
 }
+
+.selected-line {
+    background: #008822 !important;/* overrides table background */
+}
