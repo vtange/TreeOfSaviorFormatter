@@ -1,7 +1,7 @@
 (function() {
     //start of function
   var app = angular.module('formatter', []);
-  app.controller('lineDisplay',['$scope', '$sce', function($scope, $sce) {
+  app.controller('lineDisplay',['$scope', '$compile', '$sce', function($scope, $compile, $sce) {
 	$scope.file1 = [];
 	$scope.file2 = [];
 	$scope.lines = [];
@@ -87,7 +87,7 @@
 		return $scope.file1.length > 0 && $scope.file2.length > 0;
 	};
     ////////////////  file upload
-	var generateTable_drop = function(eventTarget, side){
+	var processDropped = function(eventTarget, side){
         // let's just work with one file
         var file = eventTarget.dataTransfer.files[0];
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
@@ -96,7 +96,7 @@
         if (regex.test(file.name.toLowerCase())) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                            generateTableAng(e, side);
+                            generateArr(e, side);
                     }
                     reader.readAsText(file);
         } else {
@@ -109,7 +109,7 @@
             if (typeof (FileReader) != "undefined") {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    generateTableAng(e,side);
+                    generateArr(e,side);
                 }
                 reader.readAsText($(str)[0].files[0]);
             } else {
@@ -119,24 +119,33 @@
             alert("Please upload a valid CSV file.");
         }
 	}
-	var renderTable = function(){
-		if ($scope.useCombined){
+	var oneSidedTable = function(arr){
+			var abrev = arr === $scope.file1 ? 'file1' : 'file2';
+			console.log(abrev);
+			var table = $("<table></table>");
+			for (var i = 0; i < arr.length; i++) {
+				var row = $('<tr data-ng-click="select('+abrev+','+i+')"></tr>');
+				row.html(arr[i]);
+				table.append(row);
+			}
+		return table;
+	}
+	var renderTable = function(arr){
+		if ($scope.useCombined === true){
+			console.log('rendering tabble');
 			//clear editors
 			$("#editors").html('');
 			//generate double column table
 		}
 		else{
+			console.log('rendering table');
 			//table generation (make a function out of this)
-			var table = $("<table></table>");
-			for (var i = 0; i < rows.length; i++) {
-				var row = $('<tr data-ng-click="lines.select($event)"></tr>');
-				row.html(rows[i]);
-				table.append(row);
-			}
-			$compile(table)($scope)  // links ^ dynamic html to controller.
+			var table = oneSidedTable(arr);
+			$compile(table)($scope);  // links ^ dynamic html to controller.  -> if this is still slow then consider compiling only hovered
 			//table generation (make a function out of this)
 			//editor1 or 2
-			$("#editor").append(table);
+			var position = arr === $scope.file1 ? '#editor' : '#editor2';
+			$(position).append(table);
 		}
 	}
 	var generateCombined = function(){
@@ -148,19 +157,19 @@
 			};
 		}
 	}
-	var generateTableAng = function(eventTarget, side){
+	var generateArr = function(eventTarget, side){
 					//remove dropzone, depend on side (editor will generate via ngrepeat)
 					if(side === 1){
 						$( "#drop-zone" ).remove();
 						$scope.file1 = eventTarget.target.result.split("\n");
 						generateCombined();
-						renderTable();
+						renderTable($scope.file1);
 					}
 					else{
 						$( "#drop-zone2" ).remove();
 						$scope.file2 = eventTarget.target.result.split("\n");
 						generateCombined();
-						renderTable();
+						renderTable($scope.file2);
 					};
 	}
     $("#upload").on("click", function () {
@@ -207,7 +216,7 @@
         if ($("#drop-zone").hasClass("onTop")) {
             $("#drop-zone").removeClass("onTop")
         }
-		generateTable_drop(e, 1)
+		processDropped(e, 1)
     }, false);
 	  
 	  
@@ -235,7 +244,7 @@
         if ($("#drop-zone2").hasClass("onTop")) {
             $("#drop-zone2").removeClass("onTop")
         }
-        generateTable_drop(e, 2)
+        processDropped(e, 2)
     }, false);
 
     }]) //end of controller
