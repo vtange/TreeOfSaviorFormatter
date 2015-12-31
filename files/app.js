@@ -41,7 +41,9 @@
 						$("#"+$scope.selectedCell).addClass("selected-line");
 						$("#"+$scope.selectedCell).html('');
 						var textarea = $('<textarea id="'+$scope.selectedCell+'" data-ng-model="selectedLine.text"></textarea>');
-						$compile(textarea)($scope);
+						EditingScope.$destroy();
+						EditingScope = $scope.$new();
+						$compile(textarea)(EditingScope);
 						$("#"+$scope.selectedCell).append(textarea);
 					//end glowing textarea phase
 					$scope.selectedLine.text = arr[index][prop];
@@ -62,7 +64,9 @@
 						$("#"+$scope.selectedCell).addClass("selected-line");
 						$("#"+$scope.selectedCell).html('');
 						var textarea = $('<textarea id="'+$scope.selectedCell+'" data-ng-model="selectedLine.text"></textarea>');
-						$compile(textarea)($scope);
+						EditingScope.$destroy();
+						EditingScope = $scope.$new();
+						$compile(textarea)(EditingScope);
 						$("#"+$scope.selectedCell).append(textarea);
 					//end glowing textarea phase
 					$scope.selectedLine.text = arr[index];
@@ -162,21 +166,22 @@
 			}
 		return table;
 	}
-	var linesScope = $scope.$new();
+	var TableScope = $scope.$new();
+	var EditingScope = $scope.$new();
 	var renderTable = function(arr){
 		if ($scope.useCombined()){
 			//clear editors, unbind Angular
-			linesScope.$destroy();
-			linesScope = $scope.$new();
+			TableScope.$destroy();
+			TableScope = $scope.$new();
 			$("#editors").html('');
 			//generate double column table
 			var table = twoSidedTable();
-			$compile(table)(linesScope);  // links ^ dynamic html to controller.  -> if this is still slow then consider compiling only hovered
+			$compile(table)(TableScope);  // links ^ dynamic html to controller.  -> if this is still slow then consider compiling only hovered
 			$("#editors").append(table);
 		}
 		else{
 			var table = oneSidedTable(arr);
-			$compile(table)(linesScope);  // links ^ dynamic html to controller.  -> if this is still slow then consider compiling only hovered
+			$compile(table)(TableScope);  // links ^ dynamic html to controller.  -> if this is still slow then consider compiling only hovered
 			//editor1 or 2
 			var position = arr === $scope.file1 ? '#editor' : '#editor2';
 			$(position).append(table);
