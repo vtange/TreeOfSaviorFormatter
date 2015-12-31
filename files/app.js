@@ -5,10 +5,21 @@
 	$scope.file1 = [];
 	$scope.file2 = [];
 	$scope.lines = [];
+	$scope.export = function(side){
+		//side will be 1 or 2
+		//if side is 1
+			//if useCombined()
+			//else
+		//else
+			//if useCombined()
+			//else
+		
+		
+		};
       ////////////////  selected line preparation for dialog box
         $scope.selectedLine = {text:""};		//becomes rendered line
-        $scope.selectedArr = [];				//saving
-        $scope.selectedIndex = -1;				//saving
+        $scope.selectedArr = [];				//for saving edits, comparison
+        $scope.selectedIndex = -1;				//for saving edits, comparison
         $scope.selectedProp = null;				//differentiate column in double-mode
 	  	$scope.selectedCell;					//green highlight
 	  	$scope.one = 'one';						//bandaid fix for selecting in double mode
@@ -111,9 +122,9 @@
             line = $sce.trustAsHtml(line);										// required to ng-bind to index.html -> security check for right-bar quest desc
 			return line;
 		};
-	$scope.useCombined = function(){
-		return $scope.file1.length > 0 && $scope.file2.length > 0;
-	};
+		$scope.useCombined = function(){
+			return $scope.file1.length > 0 && $scope.file2.length > 0;
+		};
     ////////////////  file upload
 	var processDropped = function(eventTarget, side){
         // let's just work with one file
