@@ -16,12 +16,14 @@
 	  	$scope.select = function(arr, index, prop, event) {		//save current work, green highlight, selectArr & Index, Updateselect Line
 			var $lastClicked = $scope.selectedCell;
 			if(!(event.target.id == $scope.selectedCell && prop == $scope.selectedProp)){	//prevent reselecting same cell, allow different column
-				if(arr[index].constructor == Object){							//double column mode
-					if($scope.selectedArr[$scope.selectedIndex]!==undefined){	//enter saving phase, check if there is a valid selected cell to save into
-						if(prop == $scope.selectedProp){						// if remain on same column
+				//double column mode vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+				if(arr[index].constructor == Object){
+					//enter saving phase
+					if($scope.selectedArr[$scope.selectedIndex]!==undefined){	// check if there is a valid selected cell to save into
+						if(prop == $scope.selectedProp){						// check if remain on same column
 							$scope.saveLine($scope.selectedArr,$scope.selectedIndex, prop);
 						}
-						else{													// if switch column
+						else{													// ..if switched columns
 							if(prop == "one"){
 								$scope.saveLine($scope.selectedArr,$scope.selectedIndex, "two");
 							}
@@ -47,7 +49,7 @@
 					$scope.selectedIndex = index;
 					$scope.selectedProp = prop;
 				}//double column mode ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-				else{															//single column mode
+				else{//single column mode vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 					if($scope.selectedArr[$scope.selectedIndex]!==undefined){		//enter saving phase, check if there is a valid selected cell to save into
 						$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
 					}//end saving phase
@@ -66,7 +68,7 @@
 					$scope.selectedLine.text = arr[index];
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
-				}
+				}//single column mode ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			};
         };
 		$scope.saveLine = function(arr, index, prop){							//save current work
