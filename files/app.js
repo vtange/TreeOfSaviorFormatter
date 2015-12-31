@@ -135,19 +135,17 @@
 			}
 		return table;
 	}
+	var linesScope = $scope.$new();
 	var renderTable = function(arr){
-		if ($scope.useCombined === true){
-			console.log('rendering tabble');
-			//clear editors
+		if ($scope.useCombined()){
+			//clear editors, unbind Angular
+			linesScope.$destroy();					
 			$("#editors").html('');
 			//generate double column table
 		}
 		else{
-			console.log('rendering table');
-			//table generation (make a function out of this)
 			var table = oneSidedTable(arr);
-			$compile(table)($scope);  // links ^ dynamic html to controller.  -> if this is still slow then consider compiling only hovered
-			//table generation (make a function out of this)
+			$compile(table)(linesScope);  // links ^ dynamic html to controller.  -> if this is still slow then consider compiling only hovered
 			//editor1 or 2
 			var position = arr === $scope.file1 ? '#editor' : '#editor2';
 			$(position).append(table);
