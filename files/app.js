@@ -50,6 +50,7 @@
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
 					$scope.selectedProp = prop;
+					$scope.setTextArea();
 				}//double column mode ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 				else{//single column mode vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 					if($scope.selectedArr[$scope.selectedIndex]!==undefined){		//enter saving phase, check if there is a valid selected cell to save into
@@ -72,9 +73,14 @@
 					$scope.selectedLine.text = arr[index];
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
+					$scope.setTextArea();
 				}//single column mode ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			};
         };
+	  	$scope.setTextArea = function(){
+				$('textarea').html($scope.selectedLine.text);					//textarea requires innerHTML content
+				autosize(document.querySelector('textarea'));					//set start size of textarea
+		}
 		$scope.saveLine = function(arr, index, prop){							//save current work
 																				//cannot just use line as argument[0] with file1[$index] at html, doesn't link to array
 			if (arr[index].constructor == Object){
