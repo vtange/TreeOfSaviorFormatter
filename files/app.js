@@ -135,6 +135,19 @@
 			}
 		return table;
 	}
+	var twoSidedTable = function(){
+			var table = $("<table></table>");
+			for (var i = 0; i < $scope.lines.length; i++) {
+				var row = $('<tr></tr>');
+				for(var prop in $scope.lines[i]){
+					var col = $('<td data-ng-click="select(file1,'+i+',null,$event)" id="line'+i+'"></td>');
+					col.html($scope.lines[i][prop]);
+					row.append(col);
+				}
+				table.append(row);
+			}
+		return table;
+	}
 	var linesScope = $scope.$new();
 	var renderTable = function(arr){
 		if ($scope.useCombined()){
@@ -142,6 +155,9 @@
 			linesScope.$destroy();					
 			$("#editors").html('');
 			//generate double column table
+			var table = twoSidedTable();
+			$compile(table)(linesScope);  // links ^ dynamic html to controller.  -> if this is still slow then consider compiling only hovered
+			$("#editors").append(table);
 		}
 		else{
 			var table = oneSidedTable(arr);
