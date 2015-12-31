@@ -97,8 +97,12 @@ table{
     line-height: 2em;
 }
 table td{
-	width:50%; 
-    border:1px solid #555;
+	width:50%;
+	border:1px solid #555;
+}
+
+table tr{
+	border:1px solid #555;
 }
 
 table tr:nth-child(even) { background: #133; }/* Cells in even rows (2,4,6...) are one color */
@@ -108,6 +112,7 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 #editors{
     position:relative;
     font-family: CabinMed;
+	width:97%;
 }
 .editor{
 	vertical-align: text-top;
