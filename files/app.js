@@ -11,14 +11,12 @@
         $scope.selectedIndex = -1;				//saving
         $scope.selectedProp = null;				//differentiate column in double-mode
 	  	$scope.selectedCell;					//green highlight
-	  $scope.one = 'one';						//bandaid fix for selecting in double mode
-	  $scope.two = 'two';						//bandaid fix for selecting in double mode
+	  	$scope.one = 'one';						//bandaid fix for selecting in double mode
+	  	$scope.two = 'two';						//bandaid fix for selecting in double mode
 	  	$scope.select = function(arr, index, prop, event) {		//save current work, green highlight, selectArr & Index, Updateselect Line
-//console.log(prop); LOG COLUMN
 			var $lastClicked = $scope.selectedCell;
-			if(!(event.target == $scope.selectedCell && prop == $scope.selectedProp)){	//prevent reselecting same cell, allow different column
+			if(!(event.target.id == $scope.selectedCell && prop == $scope.selectedProp)){	//prevent reselecting same cell, allow different column
 				if(arr[index].constructor == Object){							//double column mode
-//console.log('doubles') LOG MODE
 					if($scope.selectedArr[$scope.selectedIndex]!==undefined){	//enter saving phase, check if there is a valid selected cell to save into
 						if(prop == $scope.selectedProp){						// if remain on same column
 							$scope.saveLine($scope.selectedArr,$scope.selectedIndex, prop);
@@ -51,9 +49,14 @@
 					//glowing phase
 						if ($scope.selectedCell){
 							$("#"+$lastClicked).removeClass("selected-line");
+							$("#"+$lastClicked).html($scope.selectedArr[$scope.selectedIndex]);
 						}
 						$scope.selectedCell = event.target.id;
 						$("#"+$scope.selectedCell).addClass("selected-line");
+						$("#"+$scope.selectedCell).html('');
+						var textarea = $('<textarea id="'+$scope.selectedCell+'" data-ng-model="selectedLine.text"></textarea>');
+						$compile(textarea)($scope);
+						$("#"+$scope.selectedCell).append(textarea);
 					//end glowing phase
 					$scope.selectedLine.text = arr[index];
 					$scope.selectedArr = arr;
