@@ -30,13 +30,18 @@
 							}
 						}
 					}//end saving phase
-					//glowing phase
+					//glowing textarea phase
 						if ($scope.selectedCell){
 							$("#"+$lastClicked).removeClass("selected-line");
+							$("#"+$lastClicked).html($scope.selectedLine.text);// or selectedArr[$scope.selectedIndex][$scope.selectedProp]
 						}
 						$scope.selectedCell = event.target.id;
 						$("#"+$scope.selectedCell).addClass("selected-line");
-					//end glowing phase
+						$("#"+$scope.selectedCell).html('');
+						var textarea = $('<textarea id="'+$scope.selectedCell+'" data-ng-model="selectedLine.text"></textarea>');
+						$compile(textarea)($scope);
+						$("#"+$scope.selectedCell).append(textarea);
+					//end glowing textarea phase
 					$scope.selectedLine.text = arr[index][prop];
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
@@ -46,10 +51,10 @@
 					if($scope.selectedArr[$scope.selectedIndex]!==undefined){		//enter saving phase, check if there is a valid selected cell to save into
 						$scope.saveLine($scope.selectedArr,$scope.selectedIndex);
 					}//end saving phase
-					//glowing phase
+					//glowing textarea phase
 						if ($scope.selectedCell){
 							$("#"+$lastClicked).removeClass("selected-line");
-							$("#"+$lastClicked).html($scope.selectedArr[$scope.selectedIndex]);
+							$("#"+$lastClicked).html($scope.selectedLine.text);
 						}
 						$scope.selectedCell = event.target.id;
 						$("#"+$scope.selectedCell).addClass("selected-line");
@@ -57,7 +62,7 @@
 						var textarea = $('<textarea id="'+$scope.selectedCell+'" data-ng-model="selectedLine.text"></textarea>');
 						$compile(textarea)($scope);
 						$("#"+$scope.selectedCell).append(textarea);
-					//end glowing phase
+					//end glowing textarea phase
 					$scope.selectedLine.text = arr[index];
 					$scope.selectedArr = arr;
 					$scope.selectedIndex = index;
