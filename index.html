@@ -37,7 +37,7 @@
         		</div>
         	</div>
 			<div id="aides" data-ng-controller="aideCtrl as aideCtrl">
-				<div class="right-bar" data-ng-class="{opac: aideCtrl.toggledOn2()}">
+				<!--<div class="right-bar" data-ng-class="{opac: aideCtrl.toggledOn2()}">
 					<div class="rbar-cutoff">
 					<span class="quest" id="party-quest">Party Quest (2)</span>
 					<span class="quest" id="charm-quest">Ameno's Quest</span>
@@ -48,7 +48,7 @@
 					<span class="small" id="quest-what">Tree Guard Post<br>Enhancement against the<br> demon's soul</span>
 					<span class="small" id="quest-desc" data-ng-bind-html="renderQuestDesc(selectedLine.text)">Help Allen get rid of the demons around the Wooden Guard Post and charge its soul on the barrier.</span>
 					</div>
-				</div>
+				</div>-->
 				<div class="text-block" data-ng-class="{opac: aideCtrl.toggledOn()}">
 					<div class="dialog" data-ng-bind-html="renderDialog(selectedLine.text)">
 						<!--The eleders gave me many charms that will help me defeating the demons. <br>     I hope they help me.---initial debug text, type on purpose-->
@@ -56,7 +56,7 @@
 				</div>
 				<div id="footer">
 					<button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn()}" data-ng-click="aideCtrl.toggle()">Show Dialogue Block</button>
-					<button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn2()}" data-ng-click="aideCtrl.toggle2()">Show Quest Info</button>
+					<!--<button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn2()}" data-ng-click="aideCtrl.toggle2()">Show Quest Info</button>-->
 				</div>
 			</div>
     </div>
