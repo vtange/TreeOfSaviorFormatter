@@ -12,6 +12,7 @@
         $scope.selectedProp = null;				//differentiate column in double-mode
 	  	$scope.selectedCell;					//green highlight
 	  	$scope.select = function(arr, index, prop, event) {		//save current work, green highlight, selectArr & Index, Updateselect Line
+			console.log(prop);
 			var $lastClicked = $scope.selectedCell;
 			if(!(event.target == $scope.selectedCell && prop == $scope.selectedProp)){	//prevent reselecting same cell, allow different column
 				if(arr[index].constructor == Object){							//double column mode
@@ -30,7 +31,6 @@
 					}//end saving phase
 					//glowing phase
 						if ($scope.selectedCell){
-							console.log($lastClicked);
 							$("#"+$lastClicked).removeClass("selected-line");
 						}
 						$scope.selectedCell = event.target.id;
@@ -47,7 +47,6 @@
 					}//end saving phase
 					//glowing phase
 						if ($scope.selectedCell){
-							console.log($lastClicked);
 							$("#"+$lastClicked).removeClass("selected-line");
 						}
 						$scope.selectedCell = event.target.id;
@@ -139,11 +138,13 @@
 			var table = $("<table></table>");
 			for (var i = 0; i < $scope.lines.length; i++) {
 				var row = $('<tr></tr>');
-				for(var prop in $scope.lines[i]){
-					var col = $('<td data-ng-click="select(file1,'+i+',null,$event)" id="line'+i+'"></td>');
-					col.html($scope.lines[i][prop]);
-					row.append(col);
-				}
+				var col1 = $('<td data-ng-click="select(file1,'+i+',"one",$event)" id="line'+i+'"></td>');
+				var col2 = $('<td data-ng-click="select(file2,'+i+',"two",$event)" id="line'+i+'"></td>');
+				//would not work, double quotes conflict
+				col1.html($scope.lines[i]['one']);
+				col2.html($scope.lines[i]['two']);
+				row.append(col1);
+				row.append(col2);
 				table.append(row);
 			}
 		return table;
@@ -152,7 +153,8 @@
 	var renderTable = function(arr){
 		if ($scope.useCombined()){
 			//clear editors, unbind Angular
-			linesScope.$destroy();					
+			linesScope.$destroy();
+			linesScope = $scope.$new();
 			$("#editors").html('');
 			//generate double column table
 			var table = twoSidedTable();
