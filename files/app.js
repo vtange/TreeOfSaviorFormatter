@@ -132,7 +132,7 @@
 	  	$scope.setTextArea = function(){
 				$('textarea').html($scope.selectedLine.text);					//textarea requires innerHTML content
 				autosize(document.querySelector('textarea'));					//set start size of textarea
-		}
+		};
 		$scope.saveLine = function(arr, index, prop){							//save current work
 																				//cannot just use line as argument[0] with file1[$index] at html, doesn't link to array
 			if (arr[index].constructor == Object){
@@ -143,13 +143,13 @@
 				arr[index] = $scope.selectedLine.text;
 				$scope.selectedCell = {};//deselect
 			}
-		}
+		};
 	  	var linePreRender = function(line){
             line = line.replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1');	// get text, get rid of memo x
             line = line.replace(/{nl}/g, '<br>')								//replace {nl}s with brs
 			autosize(document.querySelector('textarea'));					//resize textarea as text is rendered(as i type)
 			return line;
-		}
+		};
 		$scope.renderDialog = function(line){
 			line = linePreRender(line);
             line = line.replace(/([\w\s\d-+;|,.!&'"\?]{120})/g, '$1<br>')		//break every 120
@@ -171,19 +171,39 @@
 			//prompt for side
 			setSide(scan);
 			function scan(side){
+				//define arr, remove undefined
 				if($scope.useCombined()){
 					var arr = side === 1 ? $scope.lines.map(function(obj){return obj['one'];}) : $scope.lines.map(function(obj){return obj['two'];});
 				}
 				else{
 					var arr = side === 1 ? $scope.file1 : $scope.file2;
 				}
-				
-				console.log(arr);
+				arr = arr.filter(function(element){return element !== undefined;});
+				//arr.foreach(item) do nlcheck(item)
+				arr.forEach(function(item, i){
+					$scope.nlCheck(item, i, side);
+				})
 			}
-		}
-		$scope.nlCheck = function(){
+		};
+		$scope.nlCheck = function(string, index, side){
 			//this checks a single line for nl, useful for after edit
-		}
+			var test = /\t([\w\s\d-+;|,.!&'"\?]{90})/g;
+			if(string.search(test)!==-1){
+				//double col mode
+				if ($scope.useCombined()){
+					if (side === 2){
+						console.log(document.getElementById('lineII'+index));
+					}
+					else{
+						console.log(document.getElementById('line'+index));
+					}
+				}
+				//single col mode
+				else{
+					console.log(document.getElementById('line'+index));
+				}
+			}
+		};
     ////////////////  file upload
 	function setSide(callback){
 			var sidetoCheck;
