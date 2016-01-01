@@ -90,6 +90,7 @@
 							$("#"+$lastClicked).html($scope.selectedLine.text);// or selectedArr[$scope.selectedIndex][$scope.selectedProp]
 						}
 						$scope.selectedCell = event.target.id;
+						$("#"+$scope.selectedCell).removeClass("nl-mark");
 						$("#"+$scope.selectedCell).addClass("selected-line");
 						$("#"+$scope.selectedCell).html('');
 						var textarea = $('<textarea id="'+$scope.selectedCell+'" data-ng-model="selectedLine.text"></textarea>');
@@ -114,6 +115,7 @@
 							$("#"+$lastClicked).html($scope.selectedLine.text);
 						}
 						$scope.selectedCell = event.target.id;
+						$("#"+$scope.selectedCell).removeClass("nl-mark");
 						$("#"+$scope.selectedCell).addClass("selected-line");
 						$("#"+$scope.selectedCell).html('');
 						var textarea = $('<textarea id="'+$scope.selectedCell+'" data-ng-model="selectedLine.text"></textarea>');

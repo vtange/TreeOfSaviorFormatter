@@ -252,5 +252,5 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
 }
 
 .nl-mark {
-    box-shadow: 0px 1000px rgba(163, 60, 38, 0.9) inset;/* overrides table background */
+    box-shadow: 0px 1000px rgba(163, 60, 38, 0.7) inset;/* overrides table background */
 }
