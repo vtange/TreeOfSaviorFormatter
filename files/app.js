@@ -88,6 +88,9 @@
 						if ($scope.selectedCell){
 							$("#"+$lastClicked).removeClass("selected-line");
 							$("#"+$lastClicked).html($scope.selectedLine.text);// or selectedArr[$scope.selectedIndex][$scope.selectedProp]
+							if(nlMode === true){
+								$scope.nlCheck($scope.selectedLine.text, $scope.selectedIndex);
+							}
 						}
 						$scope.selectedCell = event.target.id;
 						$("#"+$scope.selectedCell).removeClass("nl-mark");
@@ -113,6 +116,9 @@
 						if ($scope.selectedCell){
 							$("#"+$lastClicked).removeClass("selected-line");
 							$("#"+$lastClicked).html($scope.selectedLine.text);
+							if(nlMode === true){
+								$scope.nlCheck($scope.selectedLine.text, $scope.selectedIndex);
+							}
 						}
 						$scope.selectedCell = event.target.id;
 						$("#"+$scope.selectedCell).removeClass("nl-mark");
@@ -168,9 +174,16 @@
 		$scope.useCombined = function(){
 			return $scope.file1.length > 0 && $scope.file2.length > 0;
 		};
+	    var nlMode = false;
 	  	$scope.nlScan = function(){
 			//scan whole file
 			//prompt for side
+			if (nlMode === false){
+				nlMode = true;
+			}
+			else{
+				nlMode = false;
+			}
 			setSide(scan);
 			function scan(side){
 				//define arr, remove undefined
@@ -202,7 +215,6 @@
 				}
 				//single col mode
 				else{
-					console.log($('#line'+index));
 					$('#line'+index).addClass('nl-mark');
 				}
 			}
