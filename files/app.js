@@ -176,7 +176,11 @@
 		};
 	    var nlMode = false;
 	  	$scope.nlScan = function(){
-			//scan whole file
+			//prevent toggle if no file
+			if ($scope.file1.length === 0 && $scope.file2.length ===0){
+				alert('Load a file first.');
+				return;
+			}
 			//prompt for side
 			if (nlMode === false){
 				nlMode = true;
