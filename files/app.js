@@ -1,7 +1,7 @@
 (function() {
     //start of function
-  var app = angular.module('formatter', []);
-  app.controller('lineDisplay',['$scope', '$compile', '$sce', function($scope, $compile, $sce) {
+  var app = angular.module('formatter', ['ngAlertify']);
+  app.controller('lineDisplay',['$scope', '$compile', '$sce', 'alertify', function($scope, $compile, $sce, alertify) {
 	$scope.file1name = "file1.tsv";
 	$scope.file1 = [];
 	$scope.file2name = "file2.tsv";
@@ -166,7 +166,44 @@
 		$scope.useCombined = function(){
 			return $scope.file1.length > 0 && $scope.file2.length > 0;
 		};
+	  	$scope.nlScan = function(){
+			//scan whole file
+			//prompt for side
+			setSide(scan);
+			function scan(side){
+				if($scope.useCombined()){
+					var arr = side === 1 ? $scope.lines.map(function(obj){return obj['one'];}) : $scope.lines.map(function(obj){return obj['two'];});
+				}
+				else{
+					var arr = side === 1 ? $scope.file1 : $scope.file2;
+				}
+				
+				console.log(arr);
+			}
+		}
+		$scope.nlCheck = function(){
+			//this checks a single line for nl, useful for after edit
+		}
     ////////////////  file upload
+	function setSide(callback){
+			var sidetoCheck;
+			var whichSide = alertify
+							  .okBtn("Right")
+							  .cancelBtn("Left")
+							  .confirm("Which Side?", function (ev) {
+								  //left
+								  ev.preventDefault();
+								  sidetoCheck = 2;
+								  alertify.success("Checking Right Side...");
+								  callback(sidetoCheck);
+							  }, function(ev) {
+								  //right
+								  ev.preventDefault();
+								  sidetoCheck = 1;
+								  alertify.error("Checking Left Side...");
+								  callback(sidetoCheck);
+							  });
+	}
 	var grabFileName = function(input, side){
 		//filename grab for future export
 		if (side === 1){

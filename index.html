@@ -12,6 +12,7 @@
         <script type="text/javascript" src="files/stretchy.js"></script>
         <script type="text/javascript" src="files/flowtype.js"></script>
         <script type="text/javascript" src="files/autosize.min.js"></script>
+	    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.5/dist/js/ngAlertify.js"></script><!--CREDIT Brad Berger & CONTRIBUTORS-->
 </head>
 <body data-ng-controller="lineDisplay as lines">
         <div id="header">
@@ -59,7 +60,9 @@
 					<!--<button class="btn btn-default" data-ng-class="{ active: aideCtrl.toggledOn2()}" data-ng-click="aideCtrl.toggle2()">Show Quest Info</button>-->
 					<!--show book-->
 					<!--scan for dupicate lines-->
+					<button class="btn btn-default">Duplicate Lines Check</button>
 					<!--scan for too long without nl-->
+					<button class="btn btn-default" data-ng-click="nlScan()">{nl} Scan</button>
 					<!--export file1-->
 					<button class="btn btn-default" data-ng-click="export(1)">Export File1(left)</button>
 					<!--export file2-->
