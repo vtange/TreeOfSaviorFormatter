@@ -200,7 +200,8 @@
 				}
 				//single col mode
 				else{
-					console.log(document.getElementById('line'+index));
+					console.log($('#line'+index));
+					$('#line'+index).addClass('nl-mark');
 				}
 			}
 		};

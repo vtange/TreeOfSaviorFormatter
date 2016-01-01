@@ -247,6 +247,10 @@ table tr:hover { background: rgba(255,255,0,0.3); cursor:pointer; } /* Hover cel
     z-index:999;
 }
 
-.selected-line {
+.selected-line{
     background: #008822 !important;/* overrides table background */
+}
+
+.nl-mark {
+    box-shadow: 0px 1000px rgba(163, 60, 38, 0.9) inset;/* overrides table background */
 }
