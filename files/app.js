@@ -2,7 +2,9 @@
     //start of function
   var app = angular.module('formatter', []);
   app.controller('lineDisplay',['$scope', '$compile', '$sce', function($scope, $compile, $sce) {
+	$scope.file1name = "file1.tsv";
 	$scope.file1 = [];
+	$scope.file2name = "file2.tsv";
 	$scope.file2 = [];
 	$scope.lines = [];
 	$scope.export = function(side){
@@ -44,7 +46,7 @@
 		}
 		  var element = document.createElement('a');
 		  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(toBeExported.join("\n")));
-		  element.setAttribute('download', side === 1? "file1.tsv" : "file2.tsv");
+		  element.setAttribute('download', side === 1? $scope.file1name : $scope.file2name);
 
 		  element.style.display = 'none';
 		  document.body.appendChild(element);
@@ -165,12 +167,23 @@
 			return $scope.file1.length > 0 && $scope.file2.length > 0;
 		};
     ////////////////  file upload
+	var grabFileName = function(input, side){
+		//filename grab for future export
+		if (side === 1){
+			$scope.file1name = input;
+		}
+		else{
+			$scope.file2name = input;
+		}
+		//filename grab for future export
+	}
 	var processDropped = function(eventTarget, side){
         // let's just work with one file
         var file = eventTarget.dataTransfer.files[0];
         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
         //console.log("Type: " + file.type);                        for debug use
         //console.log(regex.test(file.name.toLowerCase()));
+		grabFileName(file.name, side);
         if (regex.test(file.name.toLowerCase())) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
@@ -183,6 +196,7 @@
 	}
 	var uploadedFileCheck = function(str, side){
 		var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.tsv|.csv|.txt)$/;
+		grabFileName($(str).val(), side);
         if (regex.test($(str).val().toLowerCase())) {
             if (typeof (FileReader) != "undefined") {
                 var reader = new FileReader();
