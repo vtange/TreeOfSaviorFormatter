@@ -6,16 +6,55 @@
 	$scope.file2 = [];
 	$scope.lines = [];
 	$scope.export = function(side){
-		//side will be 1 or 2
-		//if side is 1
-			//if useCombined()
-			//else
+		var toBeExported = [];
+		//prelim empty file check
+		//if side is 1 and file 1 is [];
+		if (side === 1 && $scope.file1.length === 0){
+			alert("Nothing to export.");
+			return;
+		}
+		//if side is 2 and file 2 is [];
+		if (side === 2 && $scope.file2.length === 0){
+			alert("Nothing to export.");
+			return;
+		}
+		//prelim emtpy file check
+		if($scope.useCombined()){//export on dbl col mode
+			if (side === 1){
+				for (var i = 0; i < $scope.file1.length; i++){
+					toBeExported.push($scope.lines.one);
+				}
+			}
+			else{
+				for (var i = 0; i < $scope.file2.length; i++){
+					toBeExported.push($scope.lines.two);
+				}
+			}
+		}//export on dbl col mode
 		//else
-			//if useCombined()
+		else{
+			//if side 1
+			if(side === 1){
+				toBeExported = $scope.file1;
+			}
 			//else
-		
-		
+			else{
+				toBeExported = $scope.file2;
+			}
+		}
+		  var element = document.createElement('a');
+		  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(toBeExported.join("\n")));
+		  element.setAttribute('download', side === 1? "file1.tsv" : "file2.tsv");
+
+		  element.style.display = 'none';
+		  document.body.appendChild(element);
+
+		  element.click();
+
+		  document.body.removeChild(element);
 		};
+	  	// export download phase
+	  	//end export download phase
       ////////////////  selected line preparation for dialog box
         $scope.selectedLine = {text:""};		//becomes rendered line
         $scope.selectedArr = [];				//for saving edits, comparison
