@@ -33,7 +33,7 @@
 				}
 			}
 		}//export on dbl col mode
-		//else
+		//else export on single col mode
 		else{
 			//if side 1
 			if(side === 1){
@@ -43,7 +43,8 @@
 			else{
 				toBeExported = $scope.file2;
 			}
-		}
+		}//else export on single col mode
+		// export download phase
 		  var element = document.createElement('a');
 		  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(toBeExported.join("\n")));
 		  element.setAttribute('download', side === 1? $scope.file1name : $scope.file2name);
@@ -55,7 +56,6 @@
 
 		  document.body.removeChild(element);
 		};
-	  	// export download phase
 	  	//end export download phase
       ////////////////  selected line preparation for dialog box
         $scope.selectedLine = {text:""};		//becomes rendered line
