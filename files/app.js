@@ -223,6 +223,42 @@
 				}
 			}
 		};
+	    $scope.dupeScan = function(){
+			function minusExt(str){
+				return str.replace(/.tsv|.csv|.txt/g,"");	//used to check files
+			}
+			function blankLines(input){
+				return input.search(/\w+_\d+[\s+\t](?:\{memo X\})?\$?([\S]+.+)/g) === -1;
+			}
+			//requires double col mode
+			if ($scope.useCombined()){
+				//require matching english and korean files
+				if (minusExt($scope.file2name) == minusExt($scope.file1name) + "_kor" || minusExt($scope.file1name) == minusExt($scope.file2name) + "_kor");{
+					//check for all blank english lines (use filter)
+					$scope.file1.filter(blankLines, $scope.file2).forEach(function(item){
+						lookForDupe(item);
+					});
+				}
+			}
+			else {
+				alert("You'll need at least 2 files to use this.")
+			}
+			//check only blank eng lines over korean
+			
+			//get side
+			function lookForDupe(str, arr){
+				if(/\w+_(\d+)[\s+\t](?:\{memo X\})?/g.exec(str) == null){
+					return;
+				}
+				var lineNum = /\w+_(\d+)[\s+\t](?:\{memo X\})?/g.exec(str)[1];
+				console.log(lineNum);
+				//find equiv korean text,
+				arr.forEach(function(item){
+					
+				})// look around the korean file for matches
+					//if fuzzysearch returns .95, prompt if you want to replace
+			}
+		};
     ////////////////  file upload
 	function setSide(callback){
 			var sidetoCheck;
