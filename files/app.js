@@ -235,8 +235,8 @@
 				//require matching english and korean files
 				if (minusExt($scope.file2name) == minusExt($scope.file1name) + "_kor" || minusExt($scope.file1name) == minusExt($scope.file2name) + "_kor");{
 					//check for all blank english lines (use filter)
-					$scope.file1.filter(blankLines, $scope.file2).forEach(function(item){
-						lookForDupe(item);
+					$scope.file1.filter(blankLines).forEach(function(item){
+						lookForDupe(item, $scope.file2);
 					});
 				}
 			}
@@ -247,16 +247,26 @@
 			
 			//get side
 			function lookForDupe(str, arr){
+				function lineNumCheck(input){
+					return input.search(lineNum) !== -1;
+				}
+				function dupeCheck(input){
+					if (source.get(input) === null){
+						return false;
+					}
+					return source.get(input)[0][0] > 0.9;
+				}
 				if(/\w+_(\d+)[\s+\t](?:\{memo X\})?/g.exec(str) == null){
 					return;
 				}
 				var lineNum = /\w+_(\d+)[\s+\t](?:\{memo X\})?/g.exec(str)[1];
-				console.log(lineNum);
 				//find equiv korean text,
-				arr.forEach(function(item){
-					
-				})// look around the korean file for matches
-					//if fuzzysearch returns .95, prompt if you want to replace
+				var kor = arr.filter(lineNumCheck);
+				kor[0] = kor[0].replace(/\w+_\d+[\s+\t](?:\{memo X\})?\$?(.+)/, '$1');
+				var source = FuzzySet(kor);
+				// look around the korean file for matches
+				var result = arr.filter(dupeCheck);
+				console.log(result);
 			}
 		};
     ////////////////  file upload
