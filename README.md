@@ -24,7 +24,19 @@
 - Regex: file extension check, and remove QUEST_blah and possible {memo X}, replace {nl} with HTML ```<br>```
 - Replace table cell content with ```<textarea>``` when selected, add green glow (CSS ```!important``` used)
 - New ```<textarea>```'s are ```$compile```d to an ```$scope.new()```->"EditingScope" and ```$destroy```ed when deselected.
-- Maintain ```selectedCell``` via its HTML id's with ```event.target.id```.
+
+```
+var textarea = $('<textarea id="'+$scope.selectedCell+'" data-ng-model="selectedLine.text"></textarea>');
+EditingScope.$destroy();			//remove old textarea scope
+EditingScope = $scope.$new();			//generate new textarea scope
+$compile(textarea)(EditingScope);		//make connections
+$("#"+$scope.selectedCell).append(textarea);	//append the new html
+```
+
+- Keep track of what HTML element is selected via its HTML id.
+```
+$scope.selectedCell = event.target.id;
+```
 - CSS add green glow
 	
 
