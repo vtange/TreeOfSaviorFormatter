@@ -1,6 +1,15 @@
+![alt tag](http://res.cloudinary.com/dmj8qtant/image/upload/c_limit,w_600/v1452900630/lbweuszj5mblgdhma1aj.png)
 # TreeOfSaviorFormatter
 
-# Takeaways
+## Tech
+
+Jquery, Angular, NgEnter, flowtype, autosize, fuzzyset
+
+### Niceties
+
+Jquery Drag n Drop, Text File reading. Font resize on width. Exporting a text file
+
+### Details
 
   - Basic Angular ng-Repeat method will not work in this. Too many watchers created, even with optimizations such as ```track by $index``` (Angular method used ```$scope.apply``` to register changes in Array made by drag-n-drop/jQuery upload.)
   - Use of ```flowtype.js``` to make scaleable font for the game-font rendering.
