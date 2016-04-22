@@ -7,7 +7,7 @@ Jquery, Angular, NgEnter, flowtype, autosize, fuzzyset
 
 ### Niceties
 
-Jquery Drag n Drop, Text File reading. Font resize on width. Exporting a text file
+Jquery Drag n Drop, Jquery generate Angularized-HTML. Text File reading. Font resize on width. Exporting a text file
 
 ### Details
 
