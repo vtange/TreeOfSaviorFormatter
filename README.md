@@ -7,7 +7,7 @@ Jquery, Angular, NgEnter, flowtype, autosize, fuzzyset
 
 ### Niceties
 
-Jquery Drag n Drop, Jquery generate Angularized-HTML. Regex file extension check. Regex replace nls with brs && remove text. Text File reading. Font resize on width. Exporting a text file.
+Jquery Drag n Drop, Jquery generate Angularized-HTML. Regex file extension check. Regex mutations/add html (nl to br). Text File reading. Font resize on width. Exporting a text file.
 
 ### Details
 
