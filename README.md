@@ -1,4 +1,3 @@
-![alt tag](http://res.cloudinary.com/dmj8qtant/image/upload/c_limit,w_600/v1452900630/lbweuszj5mblgdhma1aj.png)
 # TreeOfSaviorFormatter
 
 ## Tech
